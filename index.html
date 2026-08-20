@@ -4,240 +4,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PropBridge — Off-Market Properties | Cash Buyers & Contractors</title>
-<meta name="description" content="PropBridge connects motivated home sellers with cash buyers and contractors. No agent fees. Close in 7-21 days. Free to list.">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="PropBridge connects motivated home sellers with verified cash buyers and contractors nationwide. No agent fees. Close in 7-21 days. Free to list.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --ink:#0F0F0F;
-  --ink2:#1C1C1C;
-  --ink3:#2E2E2E;
-  --gold:#B8935A;
-  --gold-light:#D4B483;
-  --gold-bg:#FAF5EC;
-  --stone:#F5F3EF;
-  --stone2:#EAE6DF;
-  --stone3:#D6D0C7;
-  --muted:#7A7570;
+  --ink:#080808;
+  --ink2:#111111;
+  --gold:#B89A6A;
+  --gold2:#D4B483;
+  --gold3:#8A6F48;
   --white:#FFFFFF;
-  --green:#2D7D4F;
-  --red:#B83232;
+  --offwhite:#F8F6F2;
+  --stone:#E8E4DC;
+  --muted:#6B6560;
+  --border:rgba(184,154,106,0.18);
+  --border2:rgba(255,255,255,0.07);
   --ff-h:'Cormorant Garamond',Georgia,serif;
   --ff-b:'Inter',system-ui,sans-serif;
-  --max:1140px;
-  --r:6px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--ff-b);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--white);font-family:var(--ff-b);overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased}
 
 /* ── NAV ─────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--ink);height:62px;display:flex;align-items:center;padding:0 5%}
-.nav-inner{max-width:var(--max);margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--ff-h);font-size:1.35rem;font-weight:700;color:var(--white);letter-spacing:-0.01em}
-.logo b{color:var(--gold)}
-.nav-links{display:flex;align-items:center;gap:1.75rem}
-.nav-links a{color:rgba(255,255,255,0.55);font-size:0.78rem;font-weight:600;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover{color:var(--white)}
-.btn-nav{background:var(--gold);color:var(--ink)!important;padding:0.45rem 1.1rem;border-radius:var(--r);font-weight:700!important}
-.btn-nav:hover{background:var(--gold-light)!important}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;padding:0 5%;background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:0.08em;text-decoration:none;text-transform:uppercase}
+.logo-dot{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-links a{color:rgba(255,255,255,0.45);font-size:0.68rem;font-weight:400;text-decoration:none;padding:0.5rem 1rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:rgba(255,255,255,0.85)}
+.nav-divider{width:1px;height:14px;background:rgba(255,255,255,0.1);margin:0 0.25rem}
+.nav-cta{background:transparent!important;color:var(--gold)!important;border:1px solid rgba(184,154,106,0.4);padding:0.45rem 1.25rem!important;letter-spacing:0.12em!important;transition:all 0.3s!important;border-radius:0!important}
+.nav-cta:hover{background:rgba(184,154,106,0.08)!important;border-color:var(--gold)!important;color:var(--gold2)!important}
 
-/* ── HERO ────────────────────────────────────── */
-.hero{background:var(--ink);min-height:92vh;display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:center;padding:7rem 5% 4rem;max-width:var(--max);margin:62px auto 0}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(184,147,90,0.12);border:1px solid rgba(184,147,90,0.3);color:var(--gold-light);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.85rem;border-radius:100px;margin-bottom:1.5rem}
-.dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero h1{font-family:var(--ff-h);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;line-height:1.1;color:var(--white);letter-spacing:-0.02em;margin-bottom:1.25rem}
-.hero h1 i{color:var(--gold);font-style:italic}
-.hero-sub{color:rgba(255,255,255,0.5);font-size:0.95rem;line-height:1.75;max-width:480px;margin-bottom:2.5rem}
-.hero-pills{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.pill{font-size:0.72rem;font-weight:600;letter-spacing:0.03em;padding:0.3rem 0.75rem;border-radius:100px;border:1px solid rgba(184,147,90,0.25);color:rgba(255,255,255,0.55)}
-.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
-.stat .n{font-family:var(--ff-h);font-size:1.7rem;font-weight:700;color:var(--gold)}
-.stat .l{font-size:0.7rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
+/* ── HERO ─────────────────────────────────────── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem 5% 6rem;position:relative;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 45%,rgba(184,154,106,0.05) 0%,transparent 65%)}
+/* Subtle grid */
+.hero-grid{position:absolute;inset:0;opacity:1;background-image:linear-gradient(rgba(184,154,106,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,154,106,0.04) 1px,transparent 1px);background-size:100px 100px}
+/* Corner ornaments */
+.corner{position:absolute;width:60px;height:60px;border-color:rgba(184,154,106,0.2)}
+.corner-tl{top:100px;left:5%;border-top:1px solid;border-left:1px solid}
+.corner-tr{top:100px;right:5%;border-top:1px solid;border-right:1px solid}
+.corner-bl{bottom:80px;left:5%;border-bottom:1px solid;border-left:1px solid}
+.corner-br{bottom:80px;right:5%;border-bottom:1px solid;border-right:1px solid}
 
-/* ── HERO FORM CARD ──────────────────────────── */
-.hero-card{background:var(--white);border-radius:10px;padding:1.75rem}
-.hero-card h3{font-family:var(--ff-h);font-size:1.1rem;font-weight:700;margin-bottom:0.25rem;color:var(--ink)}
-.hero-card p{font-size:0.78rem;color:var(--muted);margin-bottom:1.25rem}
-.fgroup{margin-bottom:0.9rem}
-.fgroup label{display:block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:0.3rem}
-.fgroup input,.fgroup select{width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--stone2);border-radius:var(--r);font-family:var(--ff-b);font-size:0.85rem;color:var(--ink);background:var(--white);outline:none;transition:border-color 0.2s}
-.fgroup input:focus,.fgroup select:focus{border-color:var(--gold)}
-.fgrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
-.btn-submit{width:100%;background:var(--ink);color:var(--white);padding:0.8rem;border-radius:var(--r);font-weight:700;font-size:0.875rem;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.2s;margin-top:0.25rem;letter-spacing:0.02em}
-.btn-submit:hover{background:var(--ink3)}
-.form-note{font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.6rem}
-.form-success{display:none;text-align:center;padding:1.5rem 0}
-.form-success .icon{font-size:2.25rem;margin-bottom:0.5rem}
-.form-success h4{font-family:var(--ff-h);font-size:1.1rem;margin-bottom:0.4rem}
-.form-success p{font-size:0.82rem;color:var(--muted)}
+.hero-content{position:relative;z-index:1;max-width:920px;margin:0 auto}
+.hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:2.5rem}
+.eyebrow-line{width:40px;height:1px;background:var(--gold);opacity:0.5}
+.eyebrow-text{font-size:0.65rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.live-dot{width:5px;height:5px;background:#4ade80;border-radius:50%;animation:blink 2.5s infinite;display:inline-block;margin-right:6px;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
 
-/* ── TRUST STRIP ─────────────────────────────── */
-.trust{background:var(--stone);border-top:1px solid var(--stone2);border-bottom:1px solid var(--stone2);padding:0.9rem 5%}
-.trust-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;font-weight:600;color:var(--ink3);letter-spacing:0.01em}
-.trust-item svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5;flex-shrink:0}
+.hero h1{font-family:var(--ff-h);font-size:clamp(3.75rem,7.5vw,6.5rem);font-weight:300;line-height:1.02;color:var(--white);letter-spacing:0.01em;margin-bottom:2rem}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:300}
+.hero-rule{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 2rem}
+.hero-sub{font-size:0.875rem;color:rgba(255,255,255,0.38);line-height:2;max-width:520px;margin:0 auto 3.5rem;font-weight:300;letter-spacing:0.04em}
 
-/* ── SECTIONS ────────────────────────────────── */
-.sec{padding:5rem 5%}
-.sec-inner{max-width:var(--max);margin:0 auto}
-.sec-dark{background:var(--ink)}
-.sec-stone{background:var(--stone)}
-.eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
-.eyebrow.light{color:var(--gold-light)}
-.sec-title{font-family:var(--ff-h);font-size:clamp(1.75rem,3vw,2.4rem);font-weight:900;line-height:1.12;letter-spacing:-0.02em;margin-bottom:0.85rem}
-.sec-title.light{color:var(--white)}
-.sec-sub{font-size:0.9rem;color:var(--muted);line-height:1.75;max-width:500px}
-.sec-sub.light{color:rgba(255,255,255,0.45)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-attributes{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:3.5rem;border:1px solid var(--border);display:inline-flex}
+.attr{padding:0.65rem 1.5rem;font-size:0.63rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);border-right:1px solid var(--border)}
+.attr:last-child{border-right:none}
 
-/* ── PAIN CARDS ──────────────────────────────── */
-.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;margin-top:3rem;border:1px solid var(--stone2);border-radius:8px;overflow:hidden}
-.pain-card{background:var(--white);padding:1.75rem}
-.pain-num{font-family:var(--ff-h);font-size:2.25rem;font-weight:700;color:var(--stone2);line-height:1;margin-bottom:0.85rem}
-.pain-card h3{font-size:0.9rem;font-weight:700;margin-bottom:0.85rem;color:var(--ink)}
-.pain-bad{font-size:0.8rem;color:var(--red);margin-bottom:0.5rem;display:flex;gap:0.5rem;line-height:1.55}
-.pain-good{font-size:0.8rem;color:var(--green);display:flex;gap:0.5rem;line-height:1.55}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:6rem}
+.btn-primary{background:var(--gold);color:var(--ink);padding:0.9rem 2.5rem;font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--ff-b);transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--gold2)}
+.btn-secondary{background:transparent;color:rgba(255,255,255,0.6);padding:0.9rem 2.5rem;font-size:0.68rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);cursor:pointer;font-family:var(--ff-b);transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-secondary:hover{color:var(--white);border-color:rgba(255,255,255,0.35)}
 
-/* ── COMPARISON TABLE ────────────────────────── */
-.table-wrap{overflow-x:auto;margin-top:2.5rem}
-table{width:100%;border-collapse:collapse;font-size:0.82rem}
-th{padding:0.85rem 1rem;text-align:left;background:var(--ink2);color:rgba(255,255,255,0.5);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
-th.pb{background:var(--gold);color:var(--ink);text-align:center}
-td{padding:0.85rem 1rem;border-bottom:1px solid var(--stone2);background:var(--white)}
-td.pb{background:var(--gold-bg);text-align:center;font-weight:700;color:var(--ink3)}
-tr:last-child td{border-bottom:none}
-.y{color:var(--green);font-weight:700}
-.n{color:var(--red)}
+.hero-stats{display:flex;gap:0;border:1px solid var(--border)}
+.stat{padding:2rem 3rem;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--ff-h);font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1;letter-spacing:0.02em}
+.stat-l{font-size:0.6rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-top:8px}
 
-/* ── HOW IT WORKS ────────────────────────────── */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.5rem;border:1px solid var(--stone2);border-radius:8px;overflow:hidden}
-.step{padding:1.75rem;background:var(--white);border-right:1px solid var(--stone2)}
-.step:last-child{border-right:none}
-.step-n{font-family:var(--ff-h);font-size:2.5rem;font-weight:900;color:var(--stone2);line-height:1;margin-bottom:0.85rem}
-.step h3{font-size:0.875rem;font-weight:700;margin-bottom:0.5rem}
-.step p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+/* ── MARQUEE STRIP ────────────────────────────── */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0.85rem 0;overflow:hidden;position:relative}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--ink),transparent)}
+.marquee-track{display:flex;gap:0;animation:marquee 30s linear infinite;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{padding:0 2rem;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:1.5rem;white-space:nowrap}
+.marquee-sep{width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0.4}
 
-/* ── LISTINGS ────────────────────────────────── */
-.filters{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.fbtn{background:var(--white);border:1.5px solid var(--stone2);color:var(--muted);padding:0.38rem 0.9rem;border-radius:100px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:var(--ff-b);transition:all 0.2s;letter-spacing:0.03em}
-.fbtn.on,.fbtn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg)}
-.listings{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
-.lcard{background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;overflow:hidden;transition:border-color 0.2s}
-.lcard:hover{border-color:var(--gold)}
-.lcard-img{height:170px;background:var(--ink2);position:relative;display:flex;align-items:center;justify-content:center}
-.lbadge{position:absolute;top:10px;left:10px;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:0.05em;font-family:var(--ff-b)}
-.lbadge.hot{background:var(--red);color:var(--white)}
-.lbadge.new{background:var(--green);color:var(--white)}
-.lbadge.gold{background:var(--gold);color:var(--ink)}
-.lcard-body{padding:1.1rem}
-.lcard-price{font-family:var(--ff-h);font-size:1.45rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem}
-.lcard-addr{font-size:0.8rem;color:var(--muted);margin-bottom:0.5rem}
-.lcard-meta{display:flex;gap:1rem;font-size:0.72rem;color:var(--stone3);font-weight:600}
-.lcard-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-top:0.65rem}
-.ltag{font-size:0.65rem;padding:2px 8px;border-radius:100px;border:1px solid var(--stone2);color:var(--muted);font-weight:600}
-.lcard-cta{display:block;margin-top:0.9rem;text-align:center;background:var(--stone);border:1.5px solid var(--stone2);color:var(--ink);padding:0.55rem;border-radius:var(--r);font-size:0.78rem;font-weight:700;text-decoration:none;transition:all 0.2s;font-family:var(--ff-b)}
-.lcard-cta:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+/* ── SERVICES (replacing emoji cards) ────────── */
+.services{padding:7rem 5%}
+.services-inner{max-width:1280px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:5rem}
+.section-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:12px}
+.section-overline::before,.section-overline::after{content:'';width:30px;height:1px;background:var(--gold);opacity:0.4}
+.section-title{font-family:var(--ff-h);font-size:clamp(2.25rem,4vw,3.25rem);font-weight:300;line-height:1.1;letter-spacing:0.01em;color:var(--white)}
+.section-title em{color:var(--gold);font-style:italic}
 
-/* ── CALCULATOR ──────────────────────────────── */
-.calc-box{background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:1.75rem}
-.calc-val{font-family:var(--ff-h);font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:0.75rem}
-input[type=range]{width:100%;margin-bottom:1.25rem;accent-color:var(--gold)}
-.calc-row{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--stone2);font-size:0.82rem}
-.calc-row:last-child{border-bottom:none}
-.calc-row .lbl{color:var(--muted)}
-.calc-row .val{font-weight:700}
-.calc-row.lose .val{color:var(--red)}
-.calc-row.save .val{color:var(--green)}
-.calc-row.net{border-top:2px solid var(--stone2);margin-top:0.25rem}
-.calc-row.net .lbl{font-weight:700;color:var(--ink)}
-.calc-row.net .val{font-family:var(--ff-h);font-size:1.1rem;color:var(--gold)}
-.btn-gold{width:100%;background:var(--gold);color:var(--ink);padding:0.8rem;border-radius:var(--r);font-weight:700;font-size:0.875rem;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.2s;margin-top:1rem;letter-spacing:0.02em}
-.btn-gold:hover{background:var(--gold-light)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.service-card{background:var(--ink);padding:3.5rem;position:relative;overflow:hidden;transition:background 0.4s;text-decoration:none;display:block}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.4s}
+.service-card:hover{background:rgba(184,154,106,0.04)}
+.service-card:hover::before{opacity:1}
+.service-number{font-family:var(--ff-h);font-size:0.75rem;font-weight:400;letter-spacing:0.2em;color:rgba(184,154,106,0.3);margin-bottom:2rem;display:block}
+.service-icon-line{width:32px;height:1px;background:var(--gold);margin-bottom:2rem;opacity:0.5;transition:width 0.4s}
+.service-card:hover .service-icon-line{width:56px}
+.service-card h3{font-family:var(--ff-h);font-size:1.6rem;font-weight:400;color:var(--white);margin-bottom:1rem;letter-spacing:0.01em;line-height:1.2}
+.service-card p{font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.85;font-weight:300;max-width:360px}
+.service-link{display:inline-flex;align-items:center;gap:8px;margin-top:2rem;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateX(-8px);transition:all 0.3s}
+.service-card:hover .service-link{opacity:1;transform:none}
+.service-link-arrow{font-size:0.7rem;transition:transform 0.3s}
+.service-card:hover .service-link-arrow{transform:translateX(4px)}
 
-/* ── TESTIMONIALS ────────────────────────────── */
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.tcard{background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:1.5rem}
-.stars{color:var(--gold);font-size:0.9rem;letter-spacing:2px;margin-bottom:0.85rem}
-.tcard blockquote{font-size:0.83rem;color:var(--ink3);line-height:1.75;margin-bottom:1rem;font-style:italic}
-.reviewer{display:flex;align-items:center;gap:0.65rem}
-.rav{width:38px;height:38px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--gold);font-size:0.9rem;font-family:var(--ff-b);flex-shrink:0}
-.rname{font-size:0.8rem;font-weight:700}
-.rrole{font-size:0.72rem;color:var(--muted)}
+/* ── FOOTER ───────────────────────────────────── */
+footer{border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--ff-h);font-size:1.25rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--gold)}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-nav a{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s}
+.footer-nav a:hover{color:rgba(255,255,255,0.6)}
+.footer-legal{width:100%;font-size:0.6rem;letter-spacing:0.08em;color:rgba(255,255,255,0.15);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04)}
 
-/* ── REGISTER ────────────────────────────────── */
-.reg-card{background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:2rem}
-.check-list{list-style:none;margin-top:1.75rem;display:flex;flex-direction:column;gap:0.75rem}
-.check-list li{display:flex;gap:0.6rem;font-size:0.82rem;color:var(--muted);align-items:flex-start}
-.check-list li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
-
-/* ── FAQ ─────────────────────────────────────── */
-.faq{margin-top:2.25rem;max-width:680px}
-.faq-item{border-bottom:1px solid var(--stone2);padding:1.1rem 0;cursor:pointer}
-.faq-q{display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;font-weight:700}
-.faq-ico{color:var(--gold);font-size:1.2rem;transition:transform 0.2s;flex-shrink:0}
-.faq-ico.open{transform:rotate(45deg)}
-.faq-a{font-size:0.82rem;color:var(--muted);line-height:1.75;margin-top:0.65rem;display:none}
-.faq-a.open{display:block}
-
-/* ── MODAL ───────────────────────────────────── */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:500;align-items:center;justify-content:center;padding:1rem}
+/* ── MODAL ────────────────────────────────────── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
 .overlay.open{display:flex}
-.modal{background:var(--white);border-radius:10px;padding:2rem;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.modal h2{font-family:var(--ff-h);font-size:1.5rem;margin-bottom:0.25rem}
-.modal .sub{font-size:0.8rem;color:var(--muted);margin-bottom:1.25rem}
-.xbtn{position:absolute;top:1rem;right:1rem;background:var(--stone);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--muted)}
-.fee-note{background:var(--gold-bg);border:1px solid rgba(184,147,90,0.25);border-radius:var(--r);padding:0.85rem 1rem;margin-bottom:1.25rem;font-size:0.78rem;color:var(--ink3);line-height:1.6}
-.modal-success{display:none;text-align:center;padding:2rem 0}
-.modal-success .icon{font-size:2.5rem;margin-bottom:0.75rem}
-.modal-success h3{font-family:var(--ff-h);font-size:1.35rem;margin-bottom:0.4rem}
-.modal-success p{font-size:0.82rem;color:var(--muted)}
+.modal{background:var(--ink2);border:1px solid var(--border);padding:3rem;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.modal h2{font-family:var(--ff-h);font-size:1.85rem;font-weight:300;color:var(--white);letter-spacing:0.02em;margin-bottom:0.35rem}
+.modal .sub{font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em}
+.xbtn{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);cursor:pointer;font-size:1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.xbtn:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7)}
+.fee-note{background:rgba(184,154,106,0.06);border-left:2px solid var(--gold);padding:0.85rem 1.1rem;margin-bottom:2rem;font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:0.02em}
+.fee-note strong{color:var(--gold)}
+.fgroup{margin-bottom:1.1rem}
+.fgroup label{display:block;font-size:0.6rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--ff-b);font-size:0.82rem;font-weight:300;outline:none;transition:border-color 0.3s;letter-spacing:0.02em}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:rgba(184,154,106,0.5)}
+.fgroup input::placeholder{color:rgba(255,255,255,0.2)}
+.fgroup select option{background:var(--ink2)}
+.fgrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.modal-submit{width:100%;background:var(--gold);color:var(--ink);padding:0.9rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem}
+.modal-submit:hover{background:var(--gold2)}
+.modal-success{display:none;text-align:center;padding:3rem 1rem}
+.modal-success-line{width:40px;height:1px;background:var(--gold);margin:0 auto 2rem}
+.modal-success h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:var(--white)}
+.modal-success p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.8;letter-spacing:0.03em}
 
-/* ── TOAST ───────────────────────────────────── */
-.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);border-left:3px solid var(--gold);border-radius:var(--r);padding:0.85rem 1.1rem;z-index:999;display:none;max-width:260px}
-.toast.show{display:block;animation:tin 0.25s ease}
-@keyframes tin{from{transform:translateX(12px);opacity:0}to{transform:none;opacity:1}}
-.toast-t{font-size:0.78rem;font-weight:700;color:var(--gold);margin-bottom:2px}
-.toast-m{font-size:0.72rem;color:rgba(255,255,255,0.5)}
+/* ── TOAST ────────────────────────────────────── */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--ink2);border:1px solid var(--border);padding:1rem 1.25rem;z-index:999;display:none;max-width:280px}
+.toast.show{display:block;animation:tin 0.3s ease}
+@keyframes tin{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+.toast-t{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.toast-m{font-size:0.7rem;color:rgba(255,255,255,0.35);font-weight:300}
 
-/* ── FOOTER ──────────────────────────────────── */
-footer{background:var(--ink);padding:3.5rem 5% 2rem}
-.footer-inner{max-width:var(--max);margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem}
-.flogo{font-family:var(--ff-h);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.6rem}
-.flogo b{color:var(--gold)}
-.fdesc{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.7}
-.fcol h4{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-bottom:0.85rem}
-.fcol a{display:block;font-size:0.78rem;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s}
-.fcol a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;font-size:0.68rem;color:rgba(255,255,255,0.2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
-
-/* ── RESPONSIVE ──────────────────────────────── */
+/* ── RESPONSIVE ───────────────────────────────── */
 @media(max-width:1024px){
-  .hero{grid-template-columns:1fr;padding:7rem 5% 4rem}
-  .hero-card{max-width:460px}
-  .tgrid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .steps{grid-template-columns:1fr 1fr}
-  .step:nth-child(2){border-right:none}
-  .step:nth-child(3){border-top:1px solid var(--stone2);border-right:1px solid var(--stone2)}
-  .step:nth-child(4){border-top:1px solid var(--stone2);border-right:none}
+  .services-grid{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;border:none;gap:0}
+  .stat{border-right:none;border-bottom:1px solid var(--border);padding:1.5rem 2rem}
+  .stat:last-child{border-bottom:none}
 }
-@media(max-width:700px){
+@media(max-width:768px){
   nav{padding:0 4%}
-  .nav-links a:not(.btn-nav){display:none}
-  .sec{padding:3.5rem 4%}
-  .hero{padding:5.5rem 4% 3rem}
-  .hero h1{font-size:2.2rem}
-  .hero-stats{gap:1.5rem}
-  .two{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .step{border-right:none!important;border-top:1px solid var(--stone2)}
-  .step:first-child{border-top:none}
-  .footer-grid{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero{padding:7rem 4% 5rem}
+  .hero h1{font-size:3rem}
+  .hero-attributes{flex-wrap:wrap}
+  .attr{border-right:none;border-bottom:1px solid var(--border);width:50%}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;max-width:300px;text-align:center}
+  .service-card{padding:2.5rem}
+  .corner{display:none}
   .fgrow{grid-template-columns:1fr}
-  .pain-grid{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;gap:1.5rem}
 }
 </style>
 </head>
@@ -245,316 +182,182 @@ footer{background:var(--ink);padding:3.5rem 5% 2rem}
 
 <nav>
   <div class="nav-inner">
-    <div class="logo">Prop<b>Bridge</b></div>
+    <a href="/" class="logo">Prop<span class="logo-dot">·</span>Bridge</a>
     <div class="nav-links">
-      <a href="#listings">Browse</a>
-      <a href="#how">How it works</a>
-      <a href="#compare">Why us</a>
-      <a href="#corporate">Corporate</a>
-    <a href="#faq">FAQ</a>
-      <a href="#" onclick="openModal();return false" class="btn-nav">Sell my home</a>
+      <a href="/listings.html">Browse</a>
+      <div class="nav-divider"></div>
+      <a href="/how.html">Process</a>
+      <div class="nav-divider"></div>
+      <a href="/corporate.html">Corporate</a>
+      <div class="nav-divider"></div>
+      <a href="/about.html">About</a>
+      <div class="nav-divider"></div>
+      <a href="#" onclick="openModal();return false" class="nav-cta">List Property</a>
     </div>
   </div>
 </nav>
 
-<div style="background:var(--ink);padding:0 5%">
-<div class="hero">
-  <div>
-    <div class="hero-eyebrow"><div class="dot"></div>Cash buyers active in 10+ markets nationwide</div>
-    <h1>Sell your home fast.<br><i>No agents.</i><br>No waiting.</h1>
-    <p class="hero-sub">PropBridge connects motivated sellers directly with verified cash buyers and contractors. Skip the 6-month MLS wait, save thousands in agent fees, and close in as little as 7 days.</p>
-    <div class="hero-pills">
-      <span class="pill">✓ Free to list</span>
-      <span class="pill">✓ Close in 7–21 days</span>
-      <span class="pill">✓ Buy as-is</span>
-      <span class="pill">✓ No repairs needed</span>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text"><span class="live-dot"></span>Active in 10+ markets nationwide</span>
+      <div class="eyebrow-line"></div>
     </div>
+
+    <h1>Where Serious<br>Contractors Find<br><em>Exceptional Deals</em></h1>
+
+    <div class="hero-rule"></div>
+
+    <p class="hero-sub">PropBridge connects motivated home sellers directly with verified cash buyers and contractors — without agents, without delays, without compromise.</p>
+
+    <div class="hero-attributes">
+      <div class="attr">Free to list</div>
+      <div class="attr">Close in 7–21 days</div>
+      <div class="attr">As-is purchases</div>
+      <div class="attr">Cash buyers only</div>
+      <div class="attr">2.5% at closing</div>
+    </div>
+
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="openModal()">List Your Property</button>
+      <a href="/listings.html" class="btn-secondary">Browse Listings</a>
+    </div>
+
     <div class="hero-stats">
-      <div class="stat"><div class="n" id="c1">0</div><div class="l">Active listings</div></div>
-      <div class="stat"><div class="n" id="c2">0</div><div class="l">States covered</div></div>
-      <div class="stat"><div class="n" id="c3">$0</div><div class="l">Deals closed</div></div>
+      <div class="stat"><div class="stat-n" id="c1">0</div><div class="stat-l">Active Listings</div></div>
+      <div class="stat"><div class="stat-n" id="c2">0</div><div class="stat-l">States Covered</div></div>
+      <div class="stat"><div class="stat-n" id="c3">$0</div><div class="stat-l">Deals Facilitated</div></div>
     </div>
   </div>
-  <div class="hero-card">
-    <h3>Get your free cash offer</h3>
-    <p>Takes 5 minutes. No commitment required.</p>
-    <div id="hform">
-      <div class="fgroup"><label>Full name</label><input type="text" id="h-name" placeholder="John Smith"></div>
-      <div class="fgroup"><label>Property address</label><input type="text" id="h-addr" placeholder="123 Main St, Atlanta, GA"></div>
-      <div class="fgrow">
-        <div class="fgroup"><label>Asking price</label><input type="text" id="h-price" placeholder="$200,000"></div>
-        <div class="fgroup"><label>Timeline</label><select id="h-time"><option value="asap">ASAP</option><option value="1_3_months">1–3 months</option><option value="flexible">Flexible</option></select></div>
-      </div>
-      <div class="fgroup"><label>Email</label><input type="email" id="h-email" placeholder="you@email.com"></div>
-      <div class="fgroup"><label>Phone</label><input type="tel" id="h-phone" placeholder="(555) 000-0000"></div>
-      <button class="btn-submit" onclick="submitHero()">Get cash offers now →</button>
-      <p class="form-note">Free to list · No agent fees · 2.5% fee at closing only</p>
-    </div>
-    <div class="form-success" id="hsucc">
-      <div class="icon">🎉</div>
-      <h4>You're live on PropBridge!</h4>
-      <p>Cash buyers in your area have been notified. Expect inquiries within 24–48 hours.</p>
-    </div>
-  </div>
-</div>
-</div>
+</section>
 
-<div class="trust">
-  <div class="trust-inner">
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>No upfront fees</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Close in 7–21 days</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Buy as-is</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cash buyers only</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Save vs agent fees</div>
+<!-- MARKETS MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Houston, TX<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Atlanta, GA<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Memphis, TN<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Dallas, TX<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Detroit, MI<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Cleveland, OH<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Jacksonville, FL<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Birmingham, AL<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Kansas City, MO<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Philadelphia, PA<span class="marquee-sep"></span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="marquee-item">Houston, TX<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Atlanta, GA<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Memphis, TN<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Dallas, TX<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Detroit, MI<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Cleveland, OH<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Jacksonville, FL<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Birmingham, AL<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Kansas City, MO<span class="marquee-sep"></span></div>
+    <div class="marquee-item">Philadelphia, PA<span class="marquee-sep"></span></div>
   </div>
 </div>
 
-<section class="sec" id="why">
-  <div class="sec-inner">
-    <div class="eyebrow">Why PropBridge wins</div>
-    <h2 class="sec-title">Everything your competitors<br>get wrong — fixed.</h2>
-    <div class="pain-grid">
-      <div class="pain-card"><div class="pain-num">01</div><h3>Agent commission fees</h3><div class="pain-bad">✗ Zillow & MLS: sellers pay 5–6% — over $12,000 on a $200K sale</div><div class="pain-good">✓ PropBridge: 2.5% at closing only. Half the cost, zero upfront.</div></div>
-      <div class="pain-card"><div class="pain-num">02</div><h3>Months-long timelines</h3><div class="pain-bad">✗ Traditional MLS: 60–90 days average while you keep paying the mortgage</div><div class="pain-good">✓ PropBridge: cash buyers close in 7–21 days. No financing delays.</div></div>
-      <div class="pain-card"><div class="pain-num">03</div><h3>Forced repair requirements</h3><div class="pain-bad">✗ Redfin & Zillow: buyers demand inspections, repairs, and staging</div><div class="pain-good">✓ PropBridge: contractors buy as-is. No repairs, no open houses.</div></div>
-      <div class="pain-card"><div class="pain-num">04</div><h3>No contractor focus</h3><div class="pain-bad">✗ Every major platform: built for retail mortgage buyers, not investors</div><div class="pain-good">✓ PropBridge: built exclusively for cash contractors who close fast.</div></div>
-      <div class="pain-card"><div class="pain-num">05</div><h3>No direct seller access</h3><div class="pain-bad">✗ HomeLight & others: all contact filtered through agents — slow</div><div class="pain-good">✓ PropBridge: buyers contact sellers directly. Faster decisions.</div></div>
-      <div class="pain-card"><div class="pain-num">06</div><h3>Off-market gatekeeping</h3><div class="pain-bad">✗ MLS platforms: best deals locked behind agent insider networks</div><div class="pain-good">✓ PropBridge: all listings live instantly to all verified buyers.</div></div>
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-inner">
+    <div class="section-header">
+      <div class="section-overline">Our Platform</div>
+      <h2 class="section-title">A Smarter Way to<br><em>Buy and Sell</em></h2>
     </div>
-  </div>
-</section>
 
-<section class="sec sec-stone" id="compare">
-  <div class="sec-inner">
-    <div class="eyebrow">Head to head</div>
-    <h2 class="sec-title">PropBridge vs the competition</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr>
-          <th>Feature</th>
-          <th class="pb">⭐ PropBridge</th>
-          <th>Zillow</th><th>Redfin</th><th>HomeLight</th><th>Agent / MLS</th>
-        </tr></thead>
-        <tbody>
-          <tr><td>Seller fee</td><td class="pb">2.5% at closing</td><td>0%*</td><td>1–1.5%</td><td>Varies</td><td>5–6%</td></tr>
-          <tr><td>Close timeline</td><td class="pb">7–21 days</td><td>30–90 days</td><td>30–60 days</td><td>30–60 days</td><td>60–90 days</td></tr>
-          <tr><td>Buy as-is</td><td class="pb"><span class="y">✓ Always</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td>Sometimes</td><td><span class="n">✗</span></td></tr>
-          <tr><td>No repairs needed</td><td class="pb"><span class="y">✓</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td></tr>
-          <tr><td>Cash buyers only</td><td class="pb"><span class="y">✓</span></td><td>Partial</td><td>Partial</td><td>Sometimes</td><td><span class="n">✗</span></td></tr>
-          <tr><td>Direct seller contact</td><td class="pb"><span class="y">✓</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td></tr>
-          <tr><td>Off-market listings</td><td class="pb"><span class="y">✓</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td></tr>
-          <tr><td>Free to list</td><td class="pb"><span class="y">✓</span></td><td><span class="y">✓</span></td><td>Sometimes</td><td><span class="n">✗</span></td><td><span class="n">✗</span></td></tr>
-          <tr><td>Contractor focused</td><td class="pb"><span class="y">✓</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td><td><span class="n">✗</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:0.7rem;color:var(--muted);margin-top:0.6rem">*Zillow earns through agent advertising fees passed to sellers indirectly.</p>
-  </div>
-</section>
+    <div class="services-grid">
+      <a href="#" onclick="openModal();return false" class="service-card">
+        <span class="service-number">01</span>
+        <div class="service-icon-line"></div>
+        <h3>Sell Your Property</h3>
+        <p>List your property at no cost and receive direct offers from verified cash buyers within 48 hours. No repairs, no open houses, no agent commissions.</p>
+        <span class="service-link">Begin listing <span class="service-link-arrow">→</span></span>
+      </a>
 
-<section class="sec" id="how">
-  <div class="sec-inner">
-    <div class="eyebrow">The process</div>
-    <h2 class="sec-title">Four steps to close</h2>
-    <div class="steps">
-      <div class="step"><div class="step-n">01</div><h3>List for free</h3><p>Submit your property in 5 minutes. No upfront fees, no agent, no repairs. Goes live immediately.</p></div>
-      <div class="step"><div class="step-n">02</div><h3>Instant exposure</h3><p>Your listing reaches verified cash buyers and contractors actively searching your city.</p></div>
-      <div class="step"><div class="step-n">03</div><h3>Receive direct offers</h3><p>Contractors contact you directly — no agent delays. Compare offers and choose your best one.</p></div>
-      <div class="step"><div class="step-n">04</div><h3>Close and get paid</h3><p>Close in 7–21 days. Our 2.5% platform fee is collected at closing. You keep the rest.</p></div>
-    </div>
-  </div>
-</section>
+      <a href="/listings.html" class="service-card">
+        <span class="service-number">02</span>
+        <div class="service-icon-line"></div>
+        <h3>Browse Off-Market Deals</h3>
+        <p>Access exclusive off-market listings across 10 major markets before they reach the MLS. Direct seller contact. Faster closings. No bidding wars.</p>
+        <span class="service-link">View listings <span class="service-link-arrow">→</span></span>
+      </a>
 
-<section class="sec sec-stone" id="listings">
-  <div class="sec-inner">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
-      <div><div class="eyebrow">Live listings</div><h2 class="sec-title" style="margin-bottom:0">Off-market properties</h2></div>
-      <button onclick="openModal()" style="background:var(--ink);color:var(--white);padding:0.6rem 1.25rem;border-radius:var(--r);font-weight:700;font-size:0.8rem;border:none;cursor:pointer;font-family:var(--ff-b)">+ List your property</button>
-    </div>
-    <div class="filters">
-      <button class="fbtn on" onclick="filter('all',this)">All markets</button>
-      <button class="fbtn" onclick="filter('Atlanta',this)">Atlanta, GA</button>
-      <button class="fbtn" onclick="filter('Houston',this)">Houston, TX</button>
-      <button class="fbtn" onclick="filter('asap',this)">Motivated sellers</button>
-      <button class="fbtn" onclick="filter('u200',this)">Under $200K</button>
-    </div>
-    <div class="listings" id="lg"></div>
-  </div>
-</section>
+      <a href="/corporate.html" class="service-card">
+        <span class="service-number">03</span>
+        <div class="service-icon-line"></div>
+        <h3>Institutional Partnerships</h3>
+        <p>PropBridge partners with iBuyers, institutional funds, and corporate acquisition teams who require consistent, high-volume deal flow across multiple markets.</p>
+        <span class="service-link">Explore partnership <span class="service-link-arrow">→</span></span>
+      </a>
 
-<section class="sec sec-dark">
-  <div class="sec-inner">
-    <div class="two">
-      <div>
-        <div class="eyebrow light">Save money</div>
-        <h2 class="sec-title light">See how much you save<br>vs a traditional agent</h2>
-        <p class="sec-sub light">The average PropBridge seller saves over $8,500. Our 2.5% fee is collected only at closing — zero upfront cost.</p>
-        <ul style="list-style:none;margin-top:1.75rem;display:flex;flex-direction:column;gap:0.6rem">
-          <li style="font-size:0.8rem;color:rgba(255,255,255,0.45);display:flex;gap:0.5rem"><span style="color:var(--gold)">✓</span>No listing or marketing fees</li>
-          <li style="font-size:0.8rem;color:rgba(255,255,255,0.45);display:flex;gap:0.5rem"><span style="color:var(--gold)">✓</span>No buyer's agent commission</li>
-          <li style="font-size:0.8rem;color:rgba(255,255,255,0.45);display:flex;gap:0.5rem"><span style="color:var(--gold)">✓</span>No repair or staging costs</li>
-          <li style="font-size:0.8rem;color:rgba(255,255,255,0.45);display:flex;gap:0.5rem"><span style="color:var(--gold)">✓</span>Only 2.5% at closing</li>
-        </ul>
-      </div>
-      <div class="calc-box">
-        <div class="eyebrow" style="margin-bottom:0.3rem">Adjust your property value</div>
-        <div class="calc-val" id="cdisplay">$200,000</div>
-        <input type="range" id="cslider" min="50000" max="600000" value="200000" step="5000">
-        <div class="calc-row lose"><span class="lbl">Traditional agent (5.5%)</span><span class="val" id="cagent">−$11,000</span></div>
-        <div class="calc-row"><span class="lbl">PropBridge fee (2.5%)</span><span class="val" id="cpb">−$5,000</span></div>
-        <div class="calc-row save"><span class="lbl">You save</span><span class="val" id="csave">$6,000</span></div>
-        <div class="calc-row net"><span class="lbl">Your net proceeds</span><span class="val" id="cnet">$195,000</span></div>
-        <button class="btn-gold" onclick="openModal()">List my property and save →</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="testimonials">
-  <div class="sec-inner">
-    <div class="eyebrow">Success stories</div>
-    <h2 class="sec-title">Real results. Real people.</h2>
-    <div class="tgrid">
-      <div class="tcard"><div class="stars">★★★★★</div><blockquote>"Listed on a Tuesday, had three contractor offers by Thursday, closed in 14 days. Saved over $11,000 in agent fees. PropBridge is the real deal."</blockquote><div class="reviewer"><div class="rav">M</div><div><div class="rname">Marcus T.</div><div class="rrole">Seller — Atlanta, GA</div></div></div></div>
-      <div class="tcard"><div class="stars">★★★★★</div><blockquote>"I was spending $500 per month on lead services with bad results. PropBridge gave me four solid deals in my first month. Exactly what contractors need."</blockquote><div class="reviewer"><div class="rav">R</div><div><div class="rname">Roberto C.</div><div class="rrole">Contractor — Houston, TX</div></div></div></div>
-      <div class="tcard"><div class="stars">★★★★★</div><blockquote>"Inherited a property that needed major work. No traditional buyer would touch it. PropBridge connected me with a cash buyer in 48 hours. Closed as-is."</blockquote><div class="reviewer"><div class="rav">J</div><div><div class="rname">Janet W.</div><div class="rrole">Seller — Memphis, TN</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec sec-stone" id="register">
-  <div class="sec-inner">
-    <div class="two">
-      <div>
-        <div class="eyebrow">For contractors and investors</div>
-        <h2 class="sec-title">Join the PropBridge network</h2>
-        <p class="sec-sub">Get exclusive access to off-market deals nationwide before they hit any public platform.</p>
-        <ul class="check-list">
-          <li>Unlimited searches in your target markets</li>
-          <li>Direct seller contact — no agent delays</li>
-          <li>Instant deal alerts for new listings in your area</li>
-          <li>Off-market deals not listed on Zillow or MLS</li>
-          <li>Free to join — pay nothing until you close</li>
-        </ul>
-      </div>
-      <div class="reg-card">
-        <h3 style="font-family:var(--ff-h);font-size:1.3rem;margin-bottom:0.25rem">Create free account</h3>
-        <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1.25rem">Join contractors already closing deals on PropBridge</p>
-        <div id="rform">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
-            <div class="fgroup"><label>First name</label><input type="text" id="rf" placeholder="John"></div>
-            <div class="fgroup"><label>Last name</label><input type="text" id="rl" placeholder="Smith"></div>
-          </div>
-          <div class="fgroup"><label>Email</label><input type="email" id="re" placeholder="john@company.com"></div>
-          <div class="fgroup"><label>Phone</label><input type="tel" id="rp" placeholder="(555) 000-0000"></div>
-          <div class="fgroup"><label>I am a</label><select id="rr"><option>Real estate contractor</option><option>Property investor</option><option>House flipper</option><option>Wholesale buyer</option><option>Buy and hold investor</option></select></div>
-          <div class="fgroup"><label>Target markets</label><input type="text" id="rm" placeholder="e.g. Atlanta, GA · Houston, TX"></div>
-          <button class="btn-submit" onclick="submitReg()">Get free access to deals →</button>
-        </div>
-        <div id="rsucc" style="display:none;text-align:center;padding:1.75rem 0">
-          <div style="font-size:2rem;margin-bottom:0.5rem">🎉</div>
-          <h3 style="font-family:var(--ff-h);font-size:1.2rem;margin-bottom:0.3rem">Welcome to PropBridge!</h3>
-          <p style="font-size:0.78rem;color:var(--muted)">Check your email for access details within 24 hours.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec sec-stone" id="corporate">
-  <div class="sec-inner">
-    <div class="eyebrow">For Institutional Buyers</div>
-    <h2 class="sec-title">Corporate & Institutional<br>Acquisition Partners</h2>
-    <p class="sec-sub">PropBridge partners with iBuyers, institutional buyers, and corporate acquisition teams who need consistent off-market deal flow across multiple markets simultaneously.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:2.5rem">
-      <div style="background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:1.75rem">
-        <div style="font-size:1.75rem;margin-bottom:0.85rem">🏢</div>
-        <h3 style="font-family:var(--ff-b);font-size:0.9rem;font-weight:700;margin-bottom:0.5rem">Weekly Deal Sheets</h3>
-        <p style="font-size:0.8rem;color:var(--muted);line-height:1.65">Receive a curated weekly report of all new motivated seller listings in your target markets — filtered by price, condition, and timeline.</p>
-      </div>
-      <div style="background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:1.75rem">
-        <div style="font-size:1.75rem;margin-bottom:0.85rem">📍</div>
-        <h3 style="font-family:var(--ff-b);font-size:0.9rem;font-weight:700;margin-bottom:0.5rem">Multi-Market Coverage</h3>
-        <p style="font-size:0.8rem;color:var(--muted);line-height:1.65">Access off-market deals across 10+ major US markets simultaneously. Scale your acquisition volume without expanding your team.</p>
-      </div>
-      <div style="background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:1.75rem">
-        <div style="font-size:1.75rem;margin-bottom:0.85rem">🤝</div>
-        <h3 style="font-family:var(--ff-b);font-size:0.9rem;font-weight:700;margin-bottom:0.5rem">Exclusive Pipeline</h3>
-        <p style="font-size:0.8rem;color:var(--muted);line-height:1.65">Get first access to motivated sellers before listings go to the open market. Direct seller contact with no agent delays or bidding wars.</p>
-      </div>
-      <div style="background:var(--white);border:1.5px solid var(--stone2);border-radius:8px;padding:1.75rem">
-        <div style="font-size:1.75rem;margin-bottom:0.85rem">💰</div>
-        <h3 style="font-family:var(--ff-b);font-size:0.9rem;font-weight:700;margin-bottom:0.5rem">Simple Fee Structure</h3>
-        <p style="font-size:0.8rem;color:var(--muted);line-height:1.65">2.5% platform fee collected at closing only. No subscription fees, no monthly retainers. You only pay when you close a deal.</p>
-      </div>
-    </div>
-    <div style="margin-top:2.5rem;background:var(--ink);border-radius:8px;padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem">
-      <div>
-        <h3 style="font-family:var(--ff-h);font-size:1.3rem;color:var(--white);margin-bottom:0.4rem">Ready to scale your acquisitions?</h3>
-        <p style="font-size:0.82rem;color:rgba(255,255,255,0.45)">We work with iBuyers, institutional funds, and corporate acquisition teams nationwide.</p>
-      </div>
-      <a href="mailto:daniel@propbridgehomes.com?subject=Corporate Partnership Inquiry" style="background:var(--gold);color:var(--ink);padding:0.8rem 1.75rem;border-radius:var(--r);font-weight:700;font-size:0.875rem;text-decoration:none;font-family:var(--ff-b);white-space:nowrap">Contact Our Partnership Team →</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="faq">
-  <div class="sec-inner">
-    <div class="eyebrow">Questions</div>
-    <h2 class="sec-title">Frequently asked questions</h2>
-    <div class="faq">
-      <div class="faq-item" onclick="tfaq(this)"><div class="faq-q">Is PropBridge really free to list?<span class="faq-ico">+</span></div><div class="faq-a">Yes — 100% free to list. You only pay our 2.5% platform fee if your property sells through a buyer we connected you with. No upfront costs, no monthly fees, no hidden charges.</div></div>
-      <div class="faq-item" onclick="tfaq(this)"><div class="faq-q">How fast can I really close?<span class="faq-ico">+</span></div><div class="faq-a">Most cash buyers close in 7–21 days because they pay cash — no mortgage approval, no bank delays, no financing contingencies holding things up.</div></div>
-      <div class="faq-item" onclick="tfaq(this)"><div class="faq-q">Do I need to make repairs before listing?<span class="faq-ico">+</span></div><div class="faq-a">No. Our contractor buyers specialize in as-is purchases. They factor repair costs into their offers. You don't need to clean, stage, or fix anything.</div></div>
-      <div class="faq-item" onclick="tfaq(this)"><div class="faq-q">How is PropBridge different from Zillow?<span class="faq-ico">+</span></div><div class="faq-a">Zillow is built for retail buyers using mortgages who need 60–90 days and require repairs. PropBridge is built for cash contractors who close in 7–21 days and buy as-is. We also cost half as much as a traditional agent.</div></div>
-      <div class="faq-item" onclick="tfaq(this)"><div class="faq-q">What markets does PropBridge cover?<span class="faq-ico">+</span></div><div class="faq-a">PropBridge is currently focused on 10+ major markets nationwide with active cash buyer networks in both cities. Expanding to additional markets throughout 2025.</div></div>
-      <div class="faq-item" onclick="tfaq(this)"><div class="faq-q">How does PropBridge collect its fee?<span class="faq-ico">+</span></div><div class="faq-a">The 2.5% platform fee is collected at closing via our secure Stripe payment system — handled automatically. No invoicing, no chasing payments.</div></div>
+      <a href="/how.html" class="service-card">
+        <span class="service-number">04</span>
+        <div class="service-icon-line"></div>
+        <h3>The PropBridge Process</h3>
+        <p>From listing to closing in as few as seven days. Our streamlined process eliminates the friction of traditional real estate transactions entirely.</p>
+        <span class="service-link">Learn more <span class="service-link-arrow">→</span></span>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div><div class="flogo">Prop<b>Bridge</b></div><p class="fdesc">Connecting motivated home sellers with verified cash buyers and contractors nationwide, and beyond.</p></div>
-      <div class="fcol"><h4>Platform</h4><a href="#listings">Browse listings</a><a href="#" onclick="openModal();return false">List your property</a><a href="#register">Join as contractor</a><a href="#compare">Why PropBridge</a></div>
-      <div class="fcol"><h4>Support</h4><a href="#corporate">Corporate</a>
-    <a href="#faq">FAQ</a><a href="#how">How it works</a><a href="mailto:daniel.r.loureiro.fernandes@gmail.com">Contact us</a></div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage.</span>
-      <span>Houston · Atlanta · Memphis · Dallas · Detroit · Cleveland · Jacksonville · Birmingham · Kansas City · Philadelphia</span>
-    </div>
+    <div class="footer-logo">Prop<span>·</span>Bridge</div>
+    <nav class="footer-nav">
+      <a href="/listings.html">Browse</a>
+      <a href="/how.html">Process</a>
+      <a href="/corporate.html">Corporate</a>
+      <a href="/about.html">About</a>
+      <a href="mailto:daniel@propbridgehomes.com">Contact</a>
+    </nav>
+    <p class="footer-legal">© 2025 PropBridge. All rights reserved. PropBridge is not a licensed real estate brokerage or agent. Platform fee of 2.5% collected at closing only. &nbsp;|&nbsp; daniel@propbridgehomes.com &nbsp;|&nbsp; Houston · Atlanta · Memphis · Dallas · Detroit · Cleveland · Jacksonville · Birmingham · Kansas City · Philadelphia</p>
   </div>
 </footer>
 
+<!-- MODAL -->
 <div class="overlay" id="smodal">
   <div class="modal">
     <button class="xbtn" onclick="closeModal()">×</button>
     <div id="sform">
-      <h2>List your property</h2>
-      <p class="sub">Free to list. Cash buyers nationwide notified instantly.</p>
-      <div class="fee-note">PropBridge charges <strong>no upfront fee</strong>. Our <strong>2.5% platform fee</strong> is collected at closing only — saving you thousands vs a traditional agent.</div>
-      <div class="fgroup"><label>Full name</label><input type="text" id="sn" placeholder="Your name"></div>
-      <div class="fgroup"><label>Email</label><input type="email" id="se" placeholder="your@email.com"></div>
-      <div class="fgroup"><label>Phone</label><input type="tel" id="sp" placeholder="(555) 000-0000"></div>
-      <div class="fgroup"><label>Property address</label><input type="text" id="sa" placeholder="123 Main St, Atlanta, GA 30301"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
-        <div class="fgroup"><label>Asking price</label><input type="text" id="sq" placeholder="$250,000"></div>
-        <div class="fgroup"><label>Property type</label><select id="st"><option value="single_family">Single family</option><option value="multi_family">Multi-family</option><option value="condo">Condo</option><option value="land">Land</option><option value="commercial">Commercial</option></select></div>
+      <div class="modal-header">
+        <h2>List Your Property</h2>
+        <p class="sub">Complimentary listing · Cash buyers notified within 24 hours</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+      <div class="fee-note">PropBridge charges <strong>no upfront fee</strong>. Our <strong>2.5% platform fee</strong> is collected at closing only — significantly below traditional agent commissions.</div>
+      <div class="fgroup"><label>Full Name</label><input type="text" id="sn" placeholder="Your name"></div>
+      <div class="fgroup"><label>Email Address</label><input type="email" id="se" placeholder="your@email.com"></div>
+      <div class="fgroup"><label>Phone Number</label><input type="tel" id="sp" placeholder="(555) 000-0000"></div>
+      <div class="fgroup"><label>Property Address</label><input type="text" id="sa" placeholder="123 Main St, Houston, TX 77001"></div>
+      <div class="fgrow">
+        <div class="fgroup"><label>Asking Price</label><input type="text" id="sq" placeholder="$250,000"></div>
+        <div class="fgroup"><label>Property Type</label>
+          <select id="st"><option value="single_family">Single Family</option><option value="multi_family">Multi-Family</option><option value="condo">Condo / Townhouse</option><option value="land">Land / Lot</option><option value="commercial">Commercial</option></select>
+        </div>
+      </div>
+      <div class="fgrow">
         <div class="fgroup"><label>Bedrooms</label><input type="number" id="sb" placeholder="3" min="0"></div>
         <div class="fgroup"><label>Bathrooms</label><input type="number" id="sba" placeholder="2" min="0" step="0.5"></div>
       </div>
-      <div class="fgroup"><label>Timeline to sell</label><select id="stl"><option value="asap">ASAP (under 30 days)</option><option value="1_3_months">1–3 months</option><option value="3_6_months">3–6 months</option><option value="flexible">Flexible</option></select></div>
-      <div class="fgroup"><label>Notes</label><textarea id="sno" rows="2" style="width:100%;padding:0.65rem 0.85rem;border:1.5px solid var(--stone2);border-radius:var(--r);font-family:var(--ff-b);font-size:0.85rem;resize:vertical;outline:none" placeholder="Property condition, reason for selling..."></textarea></div>
-      <button class="btn-submit" id="sbtn" onclick="submitModal()">Submit listing — get cash offers →</button>
+      <div class="fgroup"><label>Selling Timeline</label>
+        <select id="stl"><option value="asap">As Soon As Possible</option><option value="1_3_months">1–3 Months</option><option value="3_6_months">3–6 Months</option><option value="flexible">Flexible</option></select>
+      </div>
+      <div class="fgroup"><label>Additional Notes</label><textarea id="sno" rows="2" placeholder="Property condition, reason for selling, any relevant details..."></textarea></div>
+      <button class="modal-submit" id="sbtn" onclick="submitListing()">Submit Listing</button>
     </div>
     <div class="modal-success" id="ssucc">
-      <div class="icon">🎉</div>
-      <h3>You're live on PropBridge!</h3>
-      <p>Cash buyers in your area have been notified. Expect inquiries within 24–48 hours.</p>
+      <div class="modal-success-line"></div>
+      <h3>Listing Received</h3>
+      <p>Your property is now live on PropBridge. Verified cash buyers in your area have been notified. Expect inquiries within 24–48 hours.</p>
     </div>
   </div>
 </div>
@@ -563,91 +366,56 @@ footer{background:var(--ink);padding:3.5rem 5% 2rem}
 
 <script>
 const BE='https://propbridge-backend-production.up.railway.app';
-const demo=[
-  {id:'d1',price:189000,address:'742 Maple Ave',city:'Atlanta',state:'GA',bedrooms:3,bathrooms:1.5,sqft:1240,badge:'Motivated seller',bt:'hot',tags:['Fix & flip','As-is','Below market'],timeline:'asap'},
-  {id:'d2',price:315000,address:'1891 Oak Blvd',city:'Houston',state:'TX',bedrooms:4,bathrooms:2,sqft:1890,badge:'Price reduced',bt:'gold',tags:['BRRR strategy','Cash flow+'],timeline:'1_3_months'},
-  {id:'d3',price:97500,address:'304 Pine St',city:'Atlanta',state:'GA',bedrooms:2,bathrooms:1,sqft:980,badge:'New',bt:'new',tags:['Deep discount','Needs rehab'],timeline:'asap'},
-  {id:'d4',price:422000,address:'5510 Sunset Dr',city:'Houston',state:'TX',bedrooms:4,bathrooms:3,sqft:2210,badge:'Off-market',bt:'gold',tags:['Turnkey','Motivated'],timeline:'flexible'},
-  {id:'d5',price:138000,address:'67 Elm Court',city:'Atlanta',state:'GA',bedrooms:3,bathrooms:1,sqft:1100,badge:'Probate sale',bt:'hot',tags:['Estate sale','Quick close'],timeline:'asap'},
-  {id:'d6',price:275500,address:'2203 River Rd',city:'Houston',state:'TX',bedrooms:3,bathrooms:2,sqft:1560,badge:'New',bt:'new',tags:['Growing market','FSBO'],timeline:'1_3_months'},
-];
-let all=[];
 
-function num(e,t,p='',s=''){let c=0,i=t/60,r=setInterval(()=>{c=Math.min(c+i,t);if(p==='$'){e.textContent=c>=1e6?'$'+(c/1e6).toFixed(1)+'M':c>=1000?'$'+Math.floor(c/1000)+'K':'$'+Math.floor(c)}else{e.textContent=p+Math.floor(c).toLocaleString()+s}if(c>=t)clearInterval(r)},16)}
-
-function calc(){
-  const v=parseInt(document.getElementById('cslider').value);
-  const a=Math.round(v*.055),pb=Math.round(v*.025),sv=a-pb,nt=v-pb;
-  document.getElementById('cdisplay').textContent='$'+v.toLocaleString();
-  document.getElementById('cagent').textContent='−$'+a.toLocaleString();
-  document.getElementById('cpb').textContent='−$'+pb.toLocaleString();
-  document.getElementById('csave').textContent='$'+sv.toLocaleString();
-  document.getElementById('cnet').textContent='$'+nt.toLocaleString();
-}
-
-async function load(){
-  try{const r=await fetch(BE+'/api/listings');if(r.ok){const d=await r.json();all=d.listings?.length?d.listings:demo}else all=demo}catch{all=demo}
-  render(all);
-}
-
-function render(list){
-  const g=document.getElementById('lg');
-  if(!list.length){g.innerHTML='<p style="color:var(--muted);padding:2rem 0">No listings yet — be the first!</p>';return}
-  g.innerHTML=list.map(l=>`<div class="lcard"><div class="lcard-img"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div class="lbadge ${l.bt||'gold'}">${l.badge||'Active'}</div></div><div class="lcard-body"><div class="lcard-price">$${Number(l.price).toLocaleString()}</div><div class="lcard-addr">${l.address}, ${l.city}, ${l.state}</div><div class="lcard-meta"><span>${l.bedrooms||'?'} bd</span><span>${l.bathrooms||'?'} ba</span>${l.sqft?`<span>${Number(l.sqft).toLocaleString()} sqft</span>`:''}</div><div class="lcard-tags">${(l.tags||[]).map(t=>`<span class="ltag">${t}</span>`).join('')}</div><a href="#register" class="lcard-cta">Request property info →</a></div></div>`).join('');
-}
-
-function filter(f,btn){
-  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-  let r=all;
-  if(f==='Atlanta')r=all.filter(l=>l.city==='Atlanta');
-  else if(f==='Houston')r=all.filter(l=>l.city==='Houston');
-  else if(f==='asap')r=all.filter(l=>l.timeline==='asap');
-  else if(f==='u200')r=all.filter(l=>Number(l.price)<200000);
-  render(r);
-}
-
-async function post(d){try{await fetch(BE+'/api/listings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})}catch{}}
-
-async function submitHero(){
-  const n=document.getElementById('h-name').value.trim(),e=document.getElementById('h-email').value.trim(),a=document.getElementById('h-addr').value.trim(),p=document.getElementById('h-price').value.replace(/[^0-9]/g,'');
-  if(!n||!e||!a||!p){alert('Please fill in all fields.');return}
-  const pts=a.split(',');
-  await post({seller_name:n,seller_email:e,seller_phone:document.getElementById('h-phone').value,address:pts[0]?.trim()||a,city:pts[1]?.trim()||'',state:pts[2]?.trim().split(' ')[0]||'',zip:pts[2]?.trim().split(' ')[1]||'',price:p,timeline:document.getElementById('h-time').value});
-  document.getElementById('hform').style.display='none';document.getElementById('hsucc').style.display='block';load();
-}
-
-async function submitModal(){
-  const n=document.getElementById('sn').value.trim(),e=document.getElementById('se').value.trim(),a=document.getElementById('sa').value.trim(),p=document.getElementById('sq').value.replace(/[^0-9]/g,'');
-  if(!n||!e||!a||!p){alert('Please fill in name, email, address, and price.');return}
-  const btn=document.getElementById('sbtn');btn.textContent='Submitting...';btn.disabled=true;
-  const pts=a.split(',');
-  await post({seller_name:n,seller_email:e,seller_phone:document.getElementById('sp').value,address:pts[0]?.trim()||a,city:pts[1]?.trim()||'',state:pts[2]?.trim().split(' ')[0]||'',zip:pts[2]?.trim().split(' ')[1]||'',price:p,property_type:document.getElementById('st').value,bedrooms:document.getElementById('sb').value,bathrooms:document.getElementById('sba').value,timeline:document.getElementById('stl').value,notes:document.getElementById('sno').value});
-  document.getElementById('sform').style.display='none';document.getElementById('ssucc').style.display='block';load();
-}
-
-async function submitReg(){
-  const e=document.getElementById('re').value.trim(),f=document.getElementById('rf').value.trim();
-  if(!e||!f){alert('Please fill in your name and email.');return}
-  try{await fetch(BE+'/api/users/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,name:`${f} ${document.getElementById('rl').value}`.trim(),phone:document.getElementById('rp').value,role:'contractor',markets:[document.getElementById('rm').value],password:Math.random().toString(36).slice(2)+'Pb1!'})})}catch{}
-  document.getElementById('rform').style.display='none';document.getElementById('rsucc').style.display='block';
+function num(el,target,prefix=''){
+  let c=0,i=target/60;
+  const t=setInterval(()=>{
+    c=Math.min(c+i,target);
+    if(prefix==='$'){el.textContent=c>=1e6?'$'+(c/1e6).toFixed(1)+'M':c>=1e3?'$'+Math.floor(c/1e3)+'K':'$'+Math.floor(c)}
+    else{el.textContent=Math.floor(c).toLocaleString()}
+    if(c>=target)clearInterval(t);
+  },16);
 }
 
 function openModal(){document.getElementById('smodal').classList.add('open')}
 function closeModal(){document.getElementById('smodal').classList.remove('open')}
 document.getElementById('smodal').addEventListener('click',e=>{if(e.target===document.getElementById('smodal'))closeModal()});
-function tfaq(el){const a=el.querySelector('.faq-a'),i=el.querySelector('.faq-ico');a.classList.toggle('open');i.classList.toggle('open')}
 
-const toasts=[{t:'New listing — Atlanta, GA',m:'3BR motivated seller listed at $162,000'},{t:'Contractor joined — Houston',m:'Cash buyer looking for fix and flip deals'},{t:'Deal closed in Atlanta!',m:'PropBridge facilitated a $215,000 closing'},{t:'New listing — Houston, TX',m:'4BR as-is property, ASAP timeline'},{t:'Offer submitted — Atlanta',m:'Contractor made offer on Maple Ave property'}];
+async function submitListing(){
+  const n=document.getElementById('sn').value.trim();
+  const e=document.getElementById('se').value.trim();
+  const a=document.getElementById('sa').value.trim();
+  const p=document.getElementById('sq').value.replace(/[^0-9]/g,'');
+  if(!n||!e||!a||!p){alert('Please complete all required fields.');return}
+  const btn=document.getElementById('sbtn');btn.textContent='Submitting...';btn.disabled=true;
+  const pts=a.split(',');
+  try{await fetch(BE+'/api/listings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seller_name:n,seller_email:e,seller_phone:document.getElementById('sp').value,address:pts[0]?.trim()||a,city:pts[1]?.trim()||'',state:pts[2]?.trim().split(' ')[0]||'',zip:pts[2]?.trim().split(' ')[1]||'',price:p,property_type:document.getElementById('st').value,bedrooms:document.getElementById('sb').value,bathrooms:document.getElementById('sba').value,timeline:document.getElementById('stl').value,notes:document.getElementById('sno').value})})}catch(err){}
+  document.getElementById('sform').style.display='none';
+  document.getElementById('ssucc').style.display='block';
+}
+
+const toasts=[
+  {t:'New Listing · Houston, TX',m:'3BR motivated seller — $178,000'},
+  {t:'Contractor Registered · Atlanta',m:'Cash buyer seeking fix & flip opportunities'},
+  {t:'Transaction Closed · Memphis',m:'PropBridge facilitated a $195,000 closing'},
+  {t:'New Listing · Dallas, TX',m:'4BR as-is property — immediate timeline'},
+  {t:'Offer Submitted · Cleveland',m:'Verified buyer made offer on Pine St property'},
+];
 let ti=0;
-function showToast(){const t=toasts[ti++%toasts.length];document.getElementById('tt').textContent=t.t;document.getElementById('tm').textContent=t.m;const el=document.getElementById('toast');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),4500)}
+function showToast(){
+  const t=toasts[ti++%toasts.length];
+  document.getElementById('tt').textContent=t.t;
+  document.getElementById('tm').textContent=t.m;
+  const el=document.getElementById('toast');
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),5000);
+}
 
 window.addEventListener('load',()=>{
   num(document.getElementById('c1'),1247);
   num(document.getElementById('c2'),48);
   num(document.getElementById('c3'),2400000,'$');
-  document.getElementById('cslider').addEventListener('input',calc);calc();
-  load();
-  setTimeout(()=>{showToast();setInterval(showToast,20000)},7000);
+  setTimeout(()=>{showToast();setInterval(showToast,22000)},8000);
 });
 </script>
 </body>
