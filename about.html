@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — PropBridge</title>
+<meta name="description" content="PropBridge is a nationwide off-market real estate marketplace connecting motivated home sellers with verified cash buyers and contractors.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#080808;--ink2:#111111;--ink3:#1A1A1A;
+  --gold:#B89A6A;--gold2:#D4B483;
+  --white:#FFFFFF;--muted:#6B6560;
+  --border:rgba(184,154,106,0.18);--border2:rgba(255,255,255,0.07);
+  --ff-h:'Cormorant Garamond',Georgia,serif;--ff-b:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--ff-b);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;padding:0 5%;background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:0.08em;text-decoration:none;text-transform:uppercase}
+.logo-dot{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-links a{color:rgba(255,255,255,0.45);font-size:0.68rem;font-weight:400;text-decoration:none;padding:0.5rem 1rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85)}
+.nav-divider{width:1px;height:14px;background:rgba(255,255,255,0.1);margin:0 0.25rem}
+.nav-cta{background:transparent!important;color:var(--gold)!important;border:1px solid rgba(184,154,106,0.4);padding:0.45rem 1.25rem!important;letter-spacing:0.12em!important;transition:all 0.3s!important}
+.nav-cta:hover{background:rgba(184,154,106,0.08)!important;border-color:var(--gold)!important}
+
+/* HERO */
+.about-hero{padding:10rem 5% 7rem;border-bottom:1px solid var(--border)}
+.about-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.page-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.page-overline::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.about-hero h1{font-family:var(--ff-h);font-size:clamp(2.75rem,5vw,4.5rem);font-weight:300;line-height:1.05;letter-spacing:0.01em;margin-bottom:1.75rem}
+.about-hero h1 em{color:var(--gold);font-style:italic}
+.about-hero-sub{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.9;font-weight:300;letter-spacing:0.03em}
+.about-hero-right{}
+.about-pull-quote{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;line-height:1.4;color:rgba(255,255,255,0.7);letter-spacing:0.01em;border-left:1px solid var(--gold);padding-left:2rem;margin-bottom:2rem}
+.about-pull-quote em{color:var(--gold);font-style:italic}
+.about-attribution{font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25);padding-left:2rem}
+
+/* MISSION */
+.mission-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.mission-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start}
+.section-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.section-overline::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.section-title{font-family:var(--ff-h);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing:0.01em}
+.section-title em{color:var(--gold);font-style:italic}
+.mission-text{display:flex;flex-direction:column;gap:1.5rem}
+.mission-p{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.9;font-weight:300;letter-spacing:0.03em}
+.mission-p.lead{font-size:1rem;color:rgba(255,255,255,0.6);font-family:var(--ff-h);font-weight:300;line-height:1.7;letter-spacing:0.01em}
+
+/* VALUES */
+.values-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.values-inner{max-width:1280px;margin:0 auto}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.value-card{background:var(--ink);padding:2.5rem;transition:background 0.3s}
+.value-card:hover{background:var(--ink2)}
+.value-num{font-family:var(--ff-h);font-size:0.7rem;letter-spacing:0.2em;color:rgba(184,154,106,0.3);margin-bottom:1.5rem}
+.value-line{width:20px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:1.5rem;transition:width 0.4s}
+.value-card:hover .value-line{width:36px}
+.value-card h3{font-family:var(--ff-h);font-size:1.3rem;font-weight:300;color:var(--white);margin-bottom:0.75rem;line-height:1.2}
+.value-card p{font-size:0.72rem;color:rgba(255,255,255,0.32);line-height:1.85;font-weight:300;letter-spacing:0.02em}
+
+/* TEAM */
+.team-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.team-inner{max-width:1280px;margin:0 auto}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-top:3rem;max-width:720px}
+.team-card{background:var(--ink);padding:3rem;transition:background 0.3s}
+.team-card:hover{background:var(--ink2)}
+.team-avatar{width:56px;height:56px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--ff-h);font-size:1.5rem;font-weight:300;color:var(--gold);margin-bottom:1.5rem}
+.team-name{font-family:var(--ff-h);font-size:1.4rem;font-weight:300;color:var(--white);margin-bottom:0.3rem}
+.team-title{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem}
+.team-bio{font-size:0.72rem;color:rgba(255,255,255,0.32);line-height:1.85;font-weight:300;letter-spacing:0.02em}
+
+/* NUMBERS */
+.numbers-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.numbers-inner{max-width:1280px;margin:0 auto}
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.number-item{background:var(--ink);padding:3rem 2rem;text-align:center;transition:background 0.3s}
+.number-item:hover{background:var(--ink2)}
+.number-n{font-family:var(--ff-h);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.5rem}
+.number-l{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25);line-height:1.5}
+
+/* CTA */
+.about-cta{padding:7rem 5%;text-align:center}
+.about-cta-inner{max-width:640px;margin:0 auto}
+.about-cta h2{font-family:var(--ff-h);font-size:clamp(2rem,4vw,3.25rem);font-weight:300;margin-bottom:1rem;letter-spacing:0.01em}
+.about-cta h2 em{color:var(--gold);font-style:italic}
+.about-cta p{font-size:0.78rem;color:rgba(255,255,255,0.3);line-height:1.9;margin-bottom:2.5rem;letter-spacing:0.03em}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--ink);padding:0.9rem 2.5rem;font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--ff-b);transition:background 0.3s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--gold2)}
+.btn-secondary{background:transparent;color:rgba(255,255,255,0.5);padding:0.9rem 2.5rem;font-size:0.65rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);cursor:pointer;font-family:var(--ff-b);transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-secondary:hover{color:var(--white);border-color:rgba(255,255,255,0.35)}
+
+footer{border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--ff-h);font-size:1.25rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--gold)}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-nav a{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s}
+.footer-nav a:hover{color:rgba(255,255,255,0.6)}
+.footer-legal{width:100%;font-size:0.6rem;letter-spacing:0.06em;color:rgba(255,255,255,0.15);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04)}
+
+@media(max-width:1024px){
+  .about-hero-inner,.mission-inner{grid-template-columns:1fr}
+  .values-grid,.numbers-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:0 4%}
+  .nav-links a:not(.nav-cta){display:none}
+  .about-hero{padding:8rem 4% 5rem}
+  .mission-section,.values-section,.team-section,.numbers-section,.about-cta{padding:4rem 4%}
+  .values-grid,.numbers-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr;max-width:100%}
+  .about-hero-inner{gap:4rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Prop<span class="logo-dot">·</span>Bridge</a>
+    <div class="nav-links">
+      <a href="/listings.html">Browse</a>
+      <div class="nav-divider"></div>
+      <a href="/how.html">Process</a>
+      <div class="nav-divider"></div>
+      <a href="/corporate.html">Corporate</a>
+      <div class="nav-divider"></div>
+      <a href="/about.html" class="active">About</a>
+      <div class="nav-divider"></div>
+      <a href="#" onclick="openModal();return false" class="nav-cta">List Property</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div>
+      <div class="page-overline">Our Story</div>
+      <h1>Built to Fix<br><em>Broken</em><br>Real Estate</h1>
+      <p class="about-hero-sub">PropBridge was founded on a simple conviction — that buying and selling a home should not require an agent, months of waiting, thousands in commissions, or the stress of repairs and showings. We built the platform we wished existed.</p>
+    </div>
+    <div class="about-hero-right">
+      <div class="about-pull-quote">"The traditional real estate transaction is <em>expensive, slow, and designed to benefit intermediaries</em> — not the people actually buying and selling."</div>
+      <div class="about-attribution">Daniel Fernandes · Founder, PropBridge</div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission-section">
+  <div class="mission-inner">
+    <div>
+      <div class="section-overline">Our Mission</div>
+      <h2 class="section-title">Why We<br><em>Exist</em></h2>
+    </div>
+    <div class="mission-text">
+      <p class="mission-p lead">PropBridge exists to eliminate the inefficiency, cost, and opacity of traditional residential real estate transactions — connecting sellers and buyers directly, without the friction that has defined the industry for decades.</p>
+      <p class="mission-p">The average home seller pays 5–6% of their sale price to agents who spend weeks arranging showings, negotiating with mortgage-dependent buyers, and navigating a process designed for a different era. The average buyer waits 60–90 days to close, often on a property that required significant repairs just to qualify for financing.</p>
+      <p class="mission-p">PropBridge is a different model entirely. Sellers list for free and receive direct offers from cash buyers within 48 hours. Buyers access off-market properties before they reach the MLS. Transactions close in 7–21 days. And the platform fee — 2.5%, paid only at closing — is a fraction of what traditional agents charge.</p>
+      <p class="mission-p">We are building the marketplace that real estate has always needed. One deal, one connection, one closing at a time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="section-overline">What We Stand For</div>
+    <h2 class="section-title">Our <em>Values</em></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <div class="value-line"></div>
+        <h3>Transparency</h3>
+        <p>Our fee is 2.5%. It is collected at closing. There are no hidden charges, no subscription fees, no surprises. We believe trust is built through clarity.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <div class="value-line"></div>
+        <h3>Speed</h3>
+        <p>Time is the most valuable resource in real estate. We optimize every part of our process to eliminate delays — from listing to offer to closing.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <div class="value-line"></div>
+        <h3>Directness</h3>
+        <p>Sellers and buyers speak directly. No filtered communications, no agent layers, no information asymmetry. Direct connections produce better outcomes for everyone.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">04</div>
+        <div class="value-line"></div>
+        <h3>Access</h3>
+        <p>Off-market opportunities should not be reserved for insiders. PropBridge opens the door to inventory that was previously accessible only through exclusive networks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-inner">
+    <div class="section-overline">The Team</div>
+    <h2 class="section-title">The People Behind<br><em>PropBridge</em></h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">D</div>
+        <div class="team-name">Daniel Fernandes</div>
+        <div class="team-title">Founder & Chief Executive</div>
+        <p class="team-bio">Daniel founded PropBridge with the conviction that real estate transactions should be faster, cheaper, and more transparent. Based in Houston, TX, he leads platform strategy, operations, and partnership development.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">+</div>
+        <div class="team-name">Join Our Team</div>
+        <div class="team-title">Open Positions</div>
+        <p class="team-bio">PropBridge is growing. We are looking for people who believe real estate can be better — and want to build the platform that proves it. Reach out at daniel@propbridgehomes.com.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers-section">
+  <div class="numbers-inner">
+    <div class="section-overline">By the Numbers</div>
+    <h2 class="section-title">PropBridge<br><em>at a Glance</em></h2>
+    <div class="numbers-grid">
+      <div class="number-item">
+        <div class="number-n">10+</div>
+        <div class="number-l">Active Markets<br>Nationwide</div>
+      </div>
+      <div class="number-item">
+        <div class="number-n">7–21</div>
+        <div class="number-l">Days Average<br>Time to Close</div>
+      </div>
+      <div class="number-item">
+        <div class="number-n">2.5%</div>
+        <div class="number-l">Platform Fee —<br>At Closing Only</div>
+      </div>
+      <div class="number-item">
+        <div class="number-n">$0</div>
+        <div class="number-l">Cost to List<br>Your Property</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="about-cta-inner">
+    <h2>Ready to Experience<br><em>PropBridge?</em></h2>
+    <p>Whether you're looking to sell your property quickly or find your next investment opportunity, PropBridge is the faster, smarter alternative to traditional real estate.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="openModal()">List Your Property</button>
+      <a href="/listings.html" class="btn-secondary">Browse Listings</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Prop<span>·</span>Bridge</div>
+    <nav class="footer-nav">
+      <a href="/listings.html">Browse</a>
+      <a href="/how.html">Process</a>
+      <a href="/corporate.html">Corporate</a>
+      <a href="/about.html">About</a>
+      <a href="mailto:daniel@propbridgehomes.com">Contact</a>
+    </nav>
+    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)" id="smodal">
+  <div style="background:#111;border:1px solid rgba(184,154,106,0.18);padding:3rem;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="closeModal()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);cursor:pointer;font-size:1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center">×</button>
+    <div id="sform">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:300;color:#fff;margin-bottom:0.35rem">List Your Property</h2>
+      <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;letter-spacing:0.06em">Complimentary listing · Cash buyers notified within 24 hours</p>
+      <div style="background:rgba(184,154,106,0.06);border-left:2px solid #B89A6A;padding:0.85rem 1.1rem;margin-bottom:1.5rem;font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.7">No upfront fee. <strong style="color:#B89A6A">2.5% platform fee</strong> collected at closing only.</div>
+      <div style="margin-bottom:1rem"><label style="display:block;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem">Full Name</label><input type="text" id="sn" placeholder="Your name" style="width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:#fff;font-family:Inter,sans-serif;font-size:0.82rem;outline:none"></div>
+      <div style="margin-bottom:1rem"><label style="display:block;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem">Email Address</label><input type="email" id="se" placeholder="your@email.com" style="width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:#fff;font-family:Inter,sans-serif;font-size:0.82rem;outline:none"></div>
+      <div style="margin-bottom:1rem"><label style="display:block;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem">Property Address</label><input type="text" id="sa" placeholder="123 Main St, Houston, TX 77001" style="width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:#fff;font-family:Inter,sans-serif;font-size:0.82rem;outline:none"></div>
+      <div style="margin-bottom:1rem"><label style="display:block;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem">Asking Price</label><input type="text" id="sq" placeholder="$250,000" style="width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:#fff;font-family:Inter,sans-serif;font-size:0.82rem;outline:none"></div>
+      <button onclick="submitListing()" id="sbtn" style="width:100%;background:#B89A6A;color:#080808;padding:0.9rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:Inter,sans-serif;border:none;cursor:pointer;margin-top:0.5rem">Submit Listing</button>
+    </div>
+    <div id="ssucc" style="display:none;text-align:center;padding:3rem 1rem">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:#fff">Listing Received</h3>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.8">Your property is now live. Cash buyers have been notified and will be in touch within 24–48 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const BE='https://propbridge-backend-production.up.railway.app';
+function openModal(){const m=document.getElementById('smodal');m.style.display='flex'}
+function closeModal(){const m=document.getElementById('smodal');m.style.display='none'}
+document.getElementById('smodal').addEventListener('click',e=>{if(e.target===document.getElementById('smodal'))closeModal()});
+async function submitListing(){
+  const n=document.getElementById('sn').value.trim(),e=document.getElementById('se').value.trim(),a=document.getElementById('sa').value.trim(),p=document.getElementById('sq').value.replace(/[^0-9]/g,'');
+  if(!n||!e||!a||!p){alert('Please complete all required fields.');return}
+  const btn=document.getElementById('sbtn');btn.textContent='Submitting...';btn.disabled=true;
+  const pts=a.split(',');
+  try{await fetch(BE+'/api/listings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seller_name:n,seller_email:e,address:pts[0]?.trim()||a,city:pts[1]?.trim()||'',state:pts[2]?.trim().split(' ')[0]||'',price:p})})}catch{}
+  document.getElementById('sform').style.display='none';document.getElementById('ssucc').style.display='block';
+}
+</script>
+</body>
+</html>
