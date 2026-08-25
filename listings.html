@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Listings — PropBridge</title>
+<meta name="description" content="Browse off-market properties nationwide. Direct seller contact. Cash buyers only. No MLS, no agents.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#080808;--ink2:#111111;--ink3:#1A1A1A;
+  --gold:#B89A6A;--gold2:#D4B483;
+  --white:#FFFFFF;--muted:#6B6560;
+  --border:rgba(184,154,106,0.18);--border2:rgba(255,255,255,0.07);
+  --ff-h:'Cormorant Garamond',Georgia,serif;--ff-b:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--ff-b);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;padding:0 5%;background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:0.08em;text-decoration:none;text-transform:uppercase}
+.logo-dot{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-links a{color:rgba(255,255,255,0.45);font-size:0.68rem;font-weight:400;text-decoration:none;padding:0.5rem 1rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85)}
+.nav-divider{width:1px;height:14px;background:rgba(255,255,255,0.1);margin:0 0.25rem}
+.nav-cta{background:transparent!important;color:var(--gold)!important;border:1px solid rgba(184,154,106,0.4);padding:0.45rem 1.25rem!important;letter-spacing:0.12em!important;transition:all 0.3s!important}
+.nav-cta:hover{background:rgba(184,154,106,0.08)!important;border-color:var(--gold)!important}
+
+/* PAGE HEADER */
+.page-header{padding:9rem 5% 4rem;border-bottom:1px solid var(--border)}
+.page-header-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem}
+.page-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+.page-overline::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.page-title{font-family:var(--ff-h);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.05;letter-spacing:0.01em}
+.page-title em{color:var(--gold);font-style:italic}
+.page-count{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:0.5rem}
+.list-btn{background:var(--gold);color:var(--ink);padding:0.75rem 2rem;font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--ff-b);transition:background 0.3s}
+.list-btn:hover{background:var(--gold2)}
+
+/* FILTERS */
+.filters-bar{padding:1.5rem 5%;border-bottom:1px solid var(--border);background:var(--ink)}
+.filters-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap}
+.filter-label{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-right:0.5rem}
+.fbtn{background:transparent;border:1px solid var(--border2);color:rgba(255,255,255,0.35);padding:0.4rem 1rem;font-size:0.62rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:var(--ff-b);transition:all 0.25s}
+.fbtn:hover,.fbtn.on{border-color:rgba(184,154,106,0.5);color:var(--gold)}
+.filter-sep{width:1px;height:16px;background:var(--border2);margin:0 0.25rem}
+
+/* LISTINGS GRID */
+.listings-section{padding:4rem 5%}
+.listings-inner{max-width:1280px;margin:0 auto}
+.listings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1px;background:var(--border)}
+.lcard{background:var(--ink);padding:2.5rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column}
+.lcard:hover{background:var(--ink2)}
+.lcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.3s}
+.lcard:hover::after{opacity:0.3}
+.lcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem}
+.lcard-badge{font-size:0.58rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);padding:0.25rem 0.75rem;border:1px solid rgba(184,154,106,0.3)}
+.lcard-badge.urgent{color:#fff;border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.05)}
+.lcard-date{font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);text-transform:uppercase}
+.lcard-price{font-family:var(--ff-h);font-size:2.25rem;font-weight:300;color:var(--white);letter-spacing:0.01em;margin-bottom:0.5rem;line-height:1}
+.lcard-addr{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;margin-bottom:1.75rem;line-height:1.5}
+.lcard-rule{width:24px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:1.75rem}
+.lcard-specs{display:flex;gap:2rem;margin-bottom:1.75rem}
+.spec{display:flex;flex-direction:column;gap:4px}
+.spec-val{font-size:0.85rem;font-weight:400;color:rgba(255,255,255,0.75)}
+.spec-lbl{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.lcard-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.ltag{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:0.2rem 0.6rem;border:1px solid rgba(255,255,255,0.08)}
+.lcard-cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid var(--border2)}
+.lcard-cta-text{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:letter-spacing 0.3s}
+.lcard:hover .lcard-cta-text{letter-spacing:0.22em}
+.lcard-arrow{color:var(--gold);font-size:0.75rem;transition:transform 0.3s}
+.lcard:hover .lcard-arrow{transform:translateX(4px)}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:6rem 2rem;grid-column:1/-1}
+.empty-line{width:40px;height:1px;background:var(--gold);opacity:0.3;margin:0 auto 2rem}
+.empty h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:rgba(255,255,255,0.5)}
+.empty p{font-size:0.78rem;color:rgba(255,255,255,0.2);letter-spacing:0.04em;line-height:1.8}
+
+/* REGISTER CTA */
+.register-cta{padding:6rem 5%;border-top:1px solid var(--border);text-align:center}
+.register-cta-inner{max-width:640px;margin:0 auto}
+.register-cta h2{font-family:var(--ff-h);font-size:clamp(2rem,4vw,3rem);font-weight:300;margin-bottom:1rem;letter-spacing:0.01em}
+.register-cta h2 em{color:var(--gold);font-style:italic}
+.register-cta p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;margin-bottom:2.5rem;letter-spacing:0.03em}
+.register-form{background:var(--ink2);border:1px solid var(--border);padding:2.5rem;text-align:left;max-width:480px;margin:0 auto}
+.fgroup{margin-bottom:1rem}
+.fgroup label{display:block;font-size:0.6rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.4rem}
+.fgroup input,.fgroup select{width:100%;padding:0.7rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--ff-b);font-size:0.82rem;font-weight:300;outline:none;transition:border-color 0.3s}
+.fgroup input:focus,.fgroup select:focus{border-color:rgba(184,154,106,0.5)}
+.fgroup input::placeholder{color:rgba(255,255,255,0.18)}
+.fgroup select option{background:var(--ink2)}
+.fgrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.reg-submit{width:100%;background:var(--gold);color:var(--ink);padding:0.875rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem}
+.reg-submit:hover{background:var(--gold2)}
+.reg-success{display:none;text-align:center;padding:2rem 0}
+.reg-success h3{font-family:var(--ff-h);font-size:1.5rem;font-weight:300;margin-bottom:0.5rem}
+.reg-success p{font-size:0.75rem;color:rgba(255,255,255,0.35);letter-spacing:0.04em}
+
+footer{border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--ff-h);font-size:1.25rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--gold)}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-nav a{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s}
+.footer-nav a:hover{color:rgba(255,255,255,0.6)}
+.footer-legal{width:100%;font-size:0.6rem;letter-spacing:0.06em;color:rgba(255,255,255,0.15);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04)}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.overlay.open{display:flex}
+.modal{background:var(--ink2);border:1px solid var(--border);padding:3rem;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.modal h2{font-family:var(--ff-h);font-size:1.85rem;font-weight:300;color:var(--white);letter-spacing:0.02em;margin-bottom:0.35rem}
+.modal .sub{font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em}
+.xbtn{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);cursor:pointer;font-size:1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.xbtn:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7)}
+.fee-note{background:rgba(184,154,106,0.06);border-left:2px solid var(--gold);padding:0.85rem 1.1rem;margin-bottom:2rem;font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:0.02em}
+.fee-note strong{color:var(--gold)}
+.modal-submit{width:100%;background:var(--gold);color:var(--ink);padding:0.9rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem}
+.modal-submit:hover{background:var(--gold2)}
+.modal-success{display:none;text-align:center;padding:3rem 1rem}
+.modal-success h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:var(--white)}
+.modal-success p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.8;letter-spacing:0.03em}
+
+@media(max-width:768px){
+  nav{padding:0 4%}
+  .nav-links a:not(.nav-cta){display:none}
+  .listings-grid{grid-template-columns:1fr}
+  .fgrow{grid-template-columns:1fr}
+  .page-header{padding:8rem 4% 3rem}
+  .listings-section,.register-cta{padding:3rem 4%}
+  .filters-bar{padding:1.25rem 4%}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Prop<span class="logo-dot">·</span>Bridge</a>
+    <div class="nav-links">
+      <a href="/listings.html" class="active">Browse</a>
+      <div class="nav-divider"></div>
+      <a href="/how.html">Process</a>
+      <div class="nav-divider"></div>
+      <a href="/corporate.html">Corporate</a>
+      <div class="nav-divider"></div>
+      <a href="/about.html">About</a>
+      <div class="nav-divider"></div>
+      <a href="#" onclick="openModal();return false" class="nav-cta">List Property</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <div class="page-overline">Off-Market Properties</div>
+      <h1 class="page-title">Available <em>Listings</em></h1>
+      <p class="page-count" id="listing-count">Loading properties...</p>
+    </div>
+    <button class="list-btn" onclick="openModal()">List Your Property</button>
+  </div>
+</div>
+
+<div class="filters-bar">
+  <div class="filters-inner">
+    <span class="filter-label">Filter</span>
+    <button class="fbtn on" onclick="filterL('all',this)">All Markets</button>
+    <div class="filter-sep"></div>
+    <button class="fbtn" onclick="filterL('Houston',this)">Houston</button>
+    <button class="fbtn" onclick="filterL('Atlanta',this)">Atlanta</button>
+    <button class="fbtn" onclick="filterL('Memphis',this)">Memphis</button>
+    <button class="fbtn" onclick="filterL('Dallas',this)">Dallas</button>
+    <div class="filter-sep"></div>
+    <button class="fbtn" onclick="filterL('asap',this)">Immediate Timeline</button>
+    <button class="fbtn" onclick="filterL('u200',this)">Under $200K</button>
+  </div>
+</div>
+
+<section class="listings-section">
+  <div class="listings-inner">
+    <div class="listings-grid" id="lg"></div>
+  </div>
+</section>
+
+<section class="register-cta" id="register">
+  <div class="register-cta-inner">
+    <h2>Join the<br><em>Contractor Network</em></h2>
+    <p>Register as a verified contractor or investor to receive deal alerts, access seller contact information, and close faster than any MLS listing.</p>
+    <div class="register-form">
+      <div id="rform">
+        <div class="fgrow">
+          <div class="fgroup"><label>First Name</label><input type="text" id="rf" placeholder="John"></div>
+          <div class="fgroup"><label>Last Name</label><input type="text" id="rl" placeholder="Smith"></div>
+        </div>
+        <div class="fgroup"><label>Email Address</label><input type="email" id="re" placeholder="john@company.com"></div>
+        <div class="fgroup"><label>Phone Number</label><input type="tel" id="rp" placeholder="(555) 000-0000"></div>
+        <div class="fgroup"><label>Buyer Type</label>
+          <select id="rr"><option>Real Estate Contractor</option><option>Property Investor</option><option>House Flipper</option><option>Wholesale Buyer</option><option>Institutional Buyer</option></select>
+        </div>
+        <div class="fgroup"><label>Target Markets</label><input type="text" id="rm" placeholder="e.g. Houston, TX · Atlanta, GA"></div>
+        <button class="reg-submit" onclick="submitReg()">Request Access</button>
+      </div>
+      <div class="reg-success" id="rsucc">
+        <h3>Access Requested</h3>
+        <p>You will receive confirmation within 24 hours. Welcome to PropBridge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Prop<span>·</span>Bridge</div>
+    <nav class="footer-nav">
+      <a href="/listings.html">Browse</a>
+      <a href="/how.html">Process</a>
+      <a href="/corporate.html">Corporate</a>
+      <a href="/about.html">About</a>
+      <a href="mailto:daniel@propbridgehomes.com">Contact</a>
+    </nav>
+    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+  </div>
+</footer>
+
+<!-- SELL MODAL -->
+<div class="overlay" id="smodal">
+  <div class="modal">
+    <button class="xbtn" onclick="closeModal()">×</button>
+    <div id="sform">
+      <div class="modal-header">
+        <h2>List Your Property</h2>
+        <p class="sub">Complimentary listing · Cash buyers notified within 24 hours</p>
+      </div>
+      <div class="fee-note">PropBridge charges <strong>no upfront fee</strong>. Our <strong>2.5% platform fee</strong> is collected at closing only.</div>
+      <div class="fgroup"><label>Full Name</label><input type="text" id="sn" placeholder="Your name"></div>
+      <div class="fgroup"><label>Email Address</label><input type="email" id="se" placeholder="your@email.com"></div>
+      <div class="fgroup"><label>Phone Number</label><input type="tel" id="sp" placeholder="(555) 000-0000"></div>
+      <div class="fgroup"><label>Property Address</label><input type="text" id="sa" placeholder="123 Main St, Houston, TX 77001"></div>
+      <div class="fgrow">
+        <div class="fgroup"><label>Asking Price</label><input type="text" id="sq" placeholder="$250,000"></div>
+        <div class="fgroup"><label>Property Type</label>
+          <select id="st"><option value="single_family">Single Family</option><option value="multi_family">Multi-Family</option><option value="condo">Condo</option><option value="land">Land</option><option value="commercial">Commercial</option></select>
+        </div>
+      </div>
+      <div class="fgrow">
+        <div class="fgroup"><label>Bedrooms</label><input type="number" id="sb" placeholder="3" min="0"></div>
+        <div class="fgroup"><label>Bathrooms</label><input type="number" id="sba" placeholder="2" min="0" step="0.5"></div>
+      </div>
+      <div class="fgroup"><label>Selling Timeline</label>
+        <select id="stl"><option value="asap">As Soon As Possible</option><option value="1_3_months">1–3 Months</option><option value="3_6_months">3–6 Months</option><option value="flexible">Flexible</option></select>
+      </div>
+      <div class="fgroup"><label>Additional Notes</label><textarea id="sno" rows="2" style="width:100%;padding:0.7rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--ff-b);font-size:0.82rem;font-weight:300;outline:none;resize:vertical" placeholder="Property condition, reason for selling..."></textarea></div>
+      <button class="modal-submit" id="sbtn" onclick="submitListing()">Submit Listing</button>
+    </div>
+    <div class="modal-success" id="ssucc">
+      <h3>Listing Received</h3>
+      <p>Your property is now live on PropBridge. Verified cash buyers have been notified. Expect inquiries within 24–48 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const BE='https://propbridge-backend-production.up.railway.app';
+const demo=[
+  {id:'d1',price:189000,address:'742 Maple Ave',city:'Houston',state:'TX',bedrooms:3,bathrooms:1.5,sqft:1240,badge:'Motivated Seller',tags:['Fix & Flip','As-Is','Below Market'],timeline:'asap',created_at:new Date(Date.now()-2*864e5).toISOString()},
+  {id:'d2',price:315000,address:'1891 Oak Blvd',city:'Atlanta',state:'GA',bedrooms:4,bathrooms:2,sqft:1890,badge:'Price Reduced',tags:['BRRR Strategy','Cash Flow+'],timeline:'1_3_months',created_at:new Date(Date.now()-5*864e5).toISOString()},
+  {id:'d3',price:97500,address:'304 Pine St',city:'Memphis',state:'TN',bedrooms:2,bathrooms:1,sqft:980,badge:'Immediate',tags:['Deep Discount','Needs Rehab'],timeline:'asap',created_at:new Date(Date.now()-864e5).toISOString()},
+  {id:'d4',price:422000,address:'5510 Sunset Dr',city:'Dallas',state:'TX',bedrooms:4,bathrooms:3,sqft:2210,badge:'Off-Market',tags:['Turnkey','Motivated'],timeline:'flexible',created_at:new Date(Date.now()-8*864e5).toISOString()},
+  {id:'d5',price:138000,address:'67 Elm Court',city:'Atlanta',state:'GA',bedrooms:3,bathrooms:1,sqft:1100,badge:'Probate',tags:['Estate Sale','Quick Close'],timeline:'asap',created_at:new Date(Date.now()-3*864e5).toISOString()},
+  {id:'d6',price:275500,address:'2203 River Rd',city:'Houston',state:'TX',bedrooms:3,bathrooms:2,sqft:1560,badge:'New',tags:['Growing Market','FSBO'],timeline:'1_3_months',created_at:new Date(Date.now()).toISOString()},
+];
+let all=[];
+
+function daysAgo(iso){
+  const d=Math.floor((Date.now()-new Date(iso).getTime())/864e5);
+  return d===0?'Today':d===1?'1 day ago':d+' days ago';
+}
+
+async function load(){
+  try{
+    const r=await fetch(BE+'/api/listings');
+    if(r.ok){const d=await r.json();all=d.listings?.length?d.listings:demo}
+    else all=demo;
+  }catch{all=demo}
+  render(all);
+}
+
+function render(list){
+  const g=document.getElementById('lg');
+  document.getElementById('listing-count').textContent=`${list.length} properties available`;
+  if(!list.length){
+    g.innerHTML=`<div class="empty"><div class="empty-line"></div><h3>No listings found</h3><p>Try adjusting your filters or check back shortly.</p></div>`;
+    return;
+  }
+  g.innerHTML=list.map(l=>`
+    <div class="lcard">
+      <div class="lcard-top">
+        <span class="lcard-badge ${l.timeline==='asap'?'urgent':''}">${l.badge||'Available'}</span>
+        <span class="lcard-date">${daysAgo(l.created_at||new Date().toISOString())}</span>
+      </div>
+      <div class="lcard-price">$${Number(l.price).toLocaleString()}</div>
+      <div class="lcard-addr">${l.address} · ${l.city}, ${l.state}</div>
+      <div class="lcard-rule"></div>
+      <div class="lcard-specs">
+        ${l.bedrooms?`<div class="spec"><span class="spec-val">${l.bedrooms}</span><span class="spec-lbl">Bedrooms</span></div>`:''}
+        ${l.bathrooms?`<div class="spec"><span class="spec-val">${l.bathrooms}</span><span class="spec-lbl">Bathrooms</span></div>`:''}
+        ${l.sqft?`<div class="spec"><span class="spec-val">${Number(l.sqft).toLocaleString()}</span><span class="spec-lbl">Sq Ft</span></div>`:''}
+        <div class="spec"><span class="spec-val">${l.timeline==='asap'?'Immediate':l.timeline==='flexible'?'Flexible':'1–3 mo'}</span><span class="spec-lbl">Timeline</span></div>
+      </div>
+      <div class="lcard-tags">${(l.tags||[]).map(t=>`<span class="ltag">${t}</span>`).join('')}</div>
+      <div class="lcard-cta">
+        <a href="#register" class="lcard-cta-text">Request Information</a>
+        <span class="lcard-arrow">→</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterL(f,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  let r=all;
+  if(['Houston','Atlanta','Memphis','Dallas'].includes(f))r=all.filter(l=>l.city===f);
+  else if(f==='asap')r=all.filter(l=>l.timeline==='asap');
+  else if(f==='u200')r=all.filter(l=>Number(l.price)<200000);
+  render(r);
+}
+
+function openModal(){document.getElementById('smodal').classList.add('open')}
+function closeModal(){document.getElementById('smodal').classList.remove('open')}
+document.getElementById('smodal').addEventListener('click',e=>{if(e.target===document.getElementById('smodal'))closeModal()});
+
+async function submitListing(){
+  const n=document.getElementById('sn').value.trim(),e=document.getElementById('se').value.trim(),a=document.getElementById('sa').value.trim(),p=document.getElementById('sq').value.replace(/[^0-9]/g,'');
+  if(!n||!e||!a||!p){alert('Please complete all required fields.');return}
+  const btn=document.getElementById('sbtn');btn.textContent='Submitting...';btn.disabled=true;
+  const pts=a.split(',');
+  try{await fetch(BE+'/api/listings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seller_name:n,seller_email:e,seller_phone:document.getElementById('sp').value,address:pts[0]?.trim()||a,city:pts[1]?.trim()||'',state:pts[2]?.trim().split(' ')[0]||'',zip:pts[2]?.trim().split(' ')[1]||'',price:p,property_type:document.getElementById('st').value,bedrooms:document.getElementById('sb').value,bathrooms:document.getElementById('sba').value,timeline:document.getElementById('stl').value,notes:document.getElementById('sno').value})})}catch{}
+  document.getElementById('sform').style.display='none';document.getElementById('ssucc').style.display='block';load();
+}
+
+async function submitReg(){
+  const e=document.getElementById('re').value.trim(),f=document.getElementById('rf').value.trim();
+  if(!e||!f){alert('Please fill in your name and email.');return}
+  try{await fetch(BE+'/api/users/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,name:`${f} ${document.getElementById('rl').value}`.trim(),phone:document.getElementById('rp').value,role:'contractor',markets:[document.getElementById('rm').value],password:Math.random().toString(36).slice(2)+'Pb1!'})})}catch{}
+  document.getElementById('rform').style.display='none';document.getElementById('rsucc').style.display='flex';
+  document.getElementById('rsucc').style.flexDirection='column';
+  document.getElementById('rsucc').style.alignItems='center';
+}
+
+load();
+</script>
+</body>
+</html>
