@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — PropBridge</title>
+<meta name="description" content="Get in touch with PropBridge. We connect motivated home sellers with verified cash buyers and contractors nationwide.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#080808;--ink2:#111111;
+  --gold:#B89A6A;--gold2:#D4B483;
+  --white:#FFFFFF;
+  --border:rgba(184,154,106,0.18);--border2:rgba(255,255,255,0.07);
+  --ff-h:'Cormorant Garamond',Georgia,serif;--ff-b:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--ff-b);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;padding:0 5%;background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:0.08em;text-decoration:none;text-transform:uppercase}
+.logo-dot{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-links a{color:rgba(255,255,255,0.45);font-size:0.68rem;font-weight:400;text-decoration:none;padding:0.5rem 1rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85)}
+.nav-divider{width:1px;height:14px;background:rgba(255,255,255,0.1);margin:0 0.25rem}
+.nav-cta{background:transparent!important;color:var(--gold)!important;border:1px solid rgba(184,154,106,0.4);padding:0.45rem 1.25rem!important;letter-spacing:0.12em!important;transition:all 0.3s!important}
+.nav-cta:hover{background:rgba(184,154,106,0.08)!important;border-color:var(--gold)!important}
+
+/* PAGE HEADER */
+.page-header{padding:9rem 5% 5rem;border-bottom:1px solid var(--border);text-align:center}
+.page-header-inner{max-width:640px;margin:0 auto}
+.page-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:12px}
+.page-overline::before,.page-overline::after{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.page-title{font-family:var(--ff-h);font-size:clamp(2.75rem,5vw,4.5rem);font-weight:300;line-height:1.05;letter-spacing:0.01em;margin-bottom:1.5rem}
+.page-title em{color:var(--gold);font-style:italic}
+.page-sub{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300;letter-spacing:0.04em}
+
+/* CONTACT GRID */
+.contact-section{padding:6rem 5%}
+.contact-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:start}
+
+/* LEFT — INFO */
+.contact-info{}
+.section-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.section-overline::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.contact-info h2{font-family:var(--ff-h);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:300;line-height:1.1;letter-spacing:0.01em;margin-bottom:1.25rem}
+.contact-info h2 em{color:var(--gold);font-style:italic}
+.contact-info p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300;letter-spacing:0.03em;margin-bottom:3rem}
+.contact-methods{display:flex;flex-direction:column;gap:0;border:1px solid var(--border)}
+.contact-method{padding:1.75rem;border-bottom:1px solid var(--border);transition:background 0.3s}
+.contact-method:last-child{border-bottom:none}
+.contact-method:hover{background:rgba(184,154,106,0.03)}
+.method-label{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:0.5rem}
+.method-value{font-size:0.85rem;color:rgba(255,255,255,0.65);letter-spacing:0.02em}
+.method-value a{color:var(--gold);text-decoration:none;transition:color 0.2s}
+.method-value a:hover{color:var(--gold2)}
+.method-note{font-size:0.68rem;color:rgba(255,255,255,0.2);margin-top:0.35rem;letter-spacing:0.03em}
+
+/* RIGHT — FORM */
+.contact-form-wrap{background:var(--ink2);border:1px solid var(--border);padding:2.5rem}
+.form-title{font-family:var(--ff-h);font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:0.35rem}
+.form-sub{font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.fgroup{margin-bottom:1.1rem}
+.fgroup label{display:block;font-size:0.6rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--ff-b);font-size:0.82rem;font-weight:300;outline:none;transition:border-color 0.3s;letter-spacing:0.02em}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:rgba(184,154,106,0.5)}
+.fgroup input::placeholder,.fgroup textarea::placeholder{color:rgba(255,255,255,0.18)}
+.fgroup select option{background:var(--ink2)}
+.fgrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.form-submit{width:100%;background:var(--gold);color:var(--ink);padding:0.9rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem}
+.form-submit:hover{background:var(--gold2)}
+.form-success{display:none;text-align:center;padding:3rem 1rem}
+.form-success h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:var(--white)}
+.form-success p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.8;letter-spacing:0.03em}
+.form-success-line{width:40px;height:1px;background:var(--gold);margin:0 auto 2rem}
+
+/* FAQ TEASER */
+.faq-teaser{padding:5rem 5%;border-top:1px solid var(--border);text-align:center}
+.faq-teaser-inner{max-width:600px;margin:0 auto}
+.faq-teaser h2{font-family:var(--ff-h);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:300;margin-bottom:1rem;letter-spacing:0.01em}
+.faq-teaser h2 em{color:var(--gold);font-style:italic}
+.faq-teaser p{font-size:0.78rem;color:rgba(255,255,255,0.3);line-height:1.9;margin-bottom:2rem;letter-spacing:0.03em}
+.btn-outline{background:transparent;color:rgba(255,255,255,0.5);padding:0.9rem 2.5rem;font-size:0.65rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);cursor:pointer;font-family:var(--ff-b);transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-outline:hover{color:var(--white);border-color:rgba(255,255,255,0.35)}
+
+footer{border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--ff-h);font-size:1.25rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--gold)}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-nav a{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s}
+.footer-nav a:hover{color:rgba(255,255,255,0.6)}
+.footer-legal{width:100%;font-size:0.6rem;letter-spacing:0.06em;color:rgba(255,255,255,0.15);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04)}
+
+@media(max-width:1024px){.contact-inner{grid-template-columns:1fr}}
+@media(max-width:768px){
+  nav{padding:0 4%}
+  .nav-links a:not(.nav-cta){display:none}
+  .page-header{padding:8rem 4% 4rem}
+  .contact-section,.faq-teaser{padding:4rem 4%}
+  .fgrow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Prop<span class="logo-dot">·</span>Bridge</a>
+    <div class="nav-links">
+      <a href="/listings.html">Browse</a>
+      <div class="nav-divider"></div>
+      <a href="/how.html">Process</a>
+      <div class="nav-divider"></div>
+      <a href="/corporate.html">Corporate</a>
+      <div class="nav-divider"></div>
+      <a href="/about.html">About</a>
+      <div class="nav-divider"></div>
+      <a href="/contact.html" class="active nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-overline">Get In Touch</div>
+    <h1 class="page-title">We're Here to<br><em>Help</em></h1>
+    <p class="page-sub">Whether you're a seller looking to list, a contractor seeking deals, or an institutional buyer exploring a partnership — we respond to every inquiry within one business day.</p>
+  </div>
+</div>
+
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-overline">Contact Information</div>
+      <h2>Reach Us<br><em>Directly</em></h2>
+      <p>PropBridge is a lean, founder-led operation. When you contact us, you hear back from someone who can actually help — not a support ticket system.</p>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="method-label">Email</div>
+          <div class="method-value"><a href="mailto:daniel@propbridgehomes.com">daniel@propbridgehomes.com</a></div>
+          <div class="method-note">Response within one business day</div>
+        </div>
+        <div class="contact-method">
+          <div class="method-label">For Sellers</div>
+          <div class="method-value">List your property free at propbridgehomes.com</div>
+          <div class="method-note">Cash buyers notified within 24 hours</div>
+        </div>
+        <div class="contact-method">
+          <div class="method-label">For Contractors</div>
+          <div class="method-value">Register on our listings page</div>
+          <div class="method-note">Access off-market deals immediately</div>
+        </div>
+        <div class="contact-method">
+          <div class="method-label">For Corporate Partners</div>
+          <div class="method-value"><a href="/corporate.html">Visit our Corporate page</a></div>
+          <div class="method-note">Institutional & iBuyer partnerships welcome</div>
+        </div>
+        <div class="contact-method">
+          <div class="method-label">Active Markets</div>
+          <div class="method-value">Houston · Atlanta · Memphis · Dallas · Detroit</div>
+          <div class="method-note">+ 5 additional markets nationwide</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <div id="cform">
+        <div class="form-title">Send Us a Message</div>
+        <p class="form-sub">Fill out the form and we'll be in touch within one business day.</p>
+        <div class="fgrow">
+          <div class="fgroup"><label>First Name</label><input type="text" id="fn" placeholder="John"></div>
+          <div class="fgroup"><label>Last Name</label><input type="text" id="ln" placeholder="Smith"></div>
+        </div>
+        <div class="fgroup"><label>Email Address</label><input type="email" id="em" placeholder="your@email.com"></div>
+        <div class="fgroup"><label>Phone Number</label><input type="tel" id="ph" placeholder="(555) 000-0000"></div>
+        <div class="fgroup"><label>I Am A</label>
+          <select id="role">
+            <option>Home Seller</option>
+            <option>Real Estate Contractor</option>
+            <option>Property Investor</option>
+            <option>Institutional / Corporate Buyer</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fgroup"><label>Subject</label><input type="text" id="subj" placeholder="How can we help you?"></div>
+        <div class="fgroup"><label>Message</label><textarea id="msg" rows="5" placeholder="Tell us what you're looking for or how we can help..."></textarea></div>
+        <button class="form-submit" onclick="submitContact()">Send Message</button>
+      </div>
+      <div class="form-success" id="csucc">
+        <div class="form-success-line"></div>
+        <h3>Message Received</h3>
+        <p>Thank you for reaching out. A member of the PropBridge team will respond to your inquiry within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-teaser">
+  <div class="faq-teaser-inner">
+    <h2>Have a Quick<br><em>Question?</em></h2>
+    <p>Many common questions about how PropBridge works, our fees, and our process are answered on our How It Works page.</p>
+    <a href="/how.html" class="btn-outline">View FAQ & Process →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Prop<span>·</span>Bridge</div>
+    <nav class="footer-nav">
+      <a href="/listings.html">Browse</a>
+      <a href="/how.html">Process</a>
+      <a href="/corporate.html">Corporate</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+  </div>
+</footer>
+
+<script>
+async function submitContact(){
+  const fn=document.getElementById('fn').value.trim();
+  const em=document.getElementById('em').value.trim();
+  const msg=document.getElementById('msg').value.trim();
+  if(!fn||!em||!msg){alert('Please fill in your name, email, and message.');return}
+  const btn=document.querySelector('.form-submit');
+  btn.textContent='Sending...';btn.disabled=true;
+  try{
+    await fetch('https://propbridge-backend-production.up.railway.app/api/users/register',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:em,
+        name:`${fn} ${document.getElementById('ln').value}`.trim(),
+        phone:document.getElementById('ph').value,
+        role:'seller',
+        password:Math.random().toString(36).slice(2)+'Pb1!'
+      })
+    });
+  }catch{}
+  document.getElementById('cform').style.display='none';
+  document.getElementById('csucc').style.display='block';
+}
+</script>
+</body>
+</html>
