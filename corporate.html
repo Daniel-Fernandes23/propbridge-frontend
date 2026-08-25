@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate & Institutional — PropBridge</title>
+<meta name="description" content="PropBridge partners with iBuyers, institutional funds, and corporate acquisition teams who require consistent deal flow across multiple markets.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#080808;--ink2:#111111;--ink3:#1A1A1A;
+  --gold:#B89A6A;--gold2:#D4B483;
+  --white:#FFFFFF;--muted:#6B6560;
+  --border:rgba(184,154,106,0.18);--border2:rgba(255,255,255,0.07);
+  --ff-h:'Cormorant Garamond',Georgia,serif;--ff-b:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--white);font-family:var(--ff-b);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;align-items:center;padding:0 5%;background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:0.08em;text-decoration:none;text-transform:uppercase}
+.logo-dot{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-links a{color:rgba(255,255,255,0.45);font-size:0.68rem;font-weight:400;text-decoration:none;padding:0.5rem 1rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85)}
+.nav-divider{width:1px;height:14px;background:rgba(255,255,255,0.1);margin:0 0.25rem}
+.nav-cta{background:transparent!important;color:var(--gold)!important;border:1px solid rgba(184,154,106,0.4);padding:0.45rem 1.25rem!important;letter-spacing:0.12em!important;transition:all 0.3s!important}
+.nav-cta:hover{background:rgba(184,154,106,0.08)!important;border-color:var(--gold)!important}
+
+/* HERO */
+.corp-hero{padding:10rem 5% 7rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.corp-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(184,154,106,0.04) 0%,transparent 70%)}
+.corp-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.corp-hero-left{}
+.page-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.page-overline::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.corp-hero h1{font-family:var(--ff-h);font-size:clamp(2.75rem,5vw,4.25rem);font-weight:300;line-height:1.05;letter-spacing:0.01em;margin-bottom:1.75rem}
+.corp-hero h1 em{color:var(--gold);font-style:italic}
+.corp-hero-sub{font-size:0.82rem;color:rgba(255,255,255,0.38);line-height:1.9;font-weight:300;letter-spacing:0.03em;margin-bottom:2.5rem}
+.corp-hero-right{border:1px solid var(--border);padding:3rem}
+.corp-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);margin-bottom:2rem}
+.corp-stat{padding:1.75rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.corp-stat:nth-child(2n){border-right:none}
+.corp-stat:nth-child(3),.corp-stat:nth-child(4){border-bottom:none}
+.corp-stat-n{font-family:var(--ff-h);font-size:2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
+.corp-stat-l{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.corp-contact-btn{width:100%;background:var(--gold);color:var(--ink);padding:1rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;display:block;text-align:center;text-decoration:none}
+.corp-contact-btn:hover{background:var(--gold2)}
+.corp-contact-note{font-size:0.62rem;letter-spacing:0.08em;color:rgba(255,255,255,0.2);text-align:center;margin-top:0.75rem}
+
+/* WHO WE SERVE */
+.who-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.who-inner{max-width:1280px;margin:0 auto}
+.section-overline{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:12px}
+.section-overline::before{content:'';width:24px;height:1px;background:var(--gold);opacity:0.5}
+.section-title{font-family:var(--ff-h);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing:0.01em;margin-bottom:3rem}
+.section-title em{color:var(--gold);font-style:italic}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.who-card{background:var(--ink);padding:2.5rem;transition:background 0.3s}
+.who-card:hover{background:var(--ink2)}
+.who-num{font-family:var(--ff-h);font-size:0.7rem;font-weight:400;letter-spacing:0.2em;color:rgba(184,154,106,0.3);margin-bottom:1.5rem}
+.who-line{width:24px;height:1px;background:var(--gold);opacity:0.4;margin-bottom:1.5rem;transition:width 0.4s}
+.who-card:hover .who-line{width:40px}
+.who-card h3{font-family:var(--ff-h);font-size:1.4rem;font-weight:300;color:var(--white);margin-bottom:0.85rem;line-height:1.2}
+.who-card p{font-size:0.75rem;color:rgba(255,255,255,0.35);line-height:1.85;font-weight:300;letter-spacing:0.02em}
+
+/* WHAT WE OFFER */
+.offer-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.offer-inner{max-width:1280px;margin:0 auto}
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)}
+.offer-item{padding:3rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);transition:background 0.3s}
+.offer-item:nth-child(2n){border-right:none}
+.offer-item:nth-last-child(-n+2){border-bottom:none}
+.offer-item:hover{background:rgba(184,154,106,0.03)}
+.offer-tag{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.offer-tag::after{content:'';width:20px;height:1px;background:var(--gold);opacity:0.3}
+.offer-item h3{font-family:var(--ff-h);font-size:1.5rem;font-weight:300;color:var(--white);margin-bottom:0.85rem;line-height:1.2}
+.offer-item p{font-size:0.75rem;color:rgba(255,255,255,0.35);line-height:1.85;font-weight:300;letter-spacing:0.02em}
+
+/* MARKETS */
+.markets-section{padding:7rem 5%;border-bottom:1px solid var(--border)}
+.markets-inner{max-width:1280px;margin:0 auto}
+.markets-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.market-item{background:var(--ink);padding:2rem 1.5rem;text-align:center;transition:background 0.3s}
+.market-item:hover{background:var(--ink2)}
+.market-city{font-family:var(--ff-h);font-size:1.1rem;font-weight:300;color:var(--white);margin-bottom:4px}
+.market-state{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.market-status{display:inline-block;margin-top:0.75rem;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);padding:0.2rem 0.6rem;border:1px solid rgba(184,154,106,0.3)}
+
+/* CONTACT FORM */
+.contact-section{padding:7rem 5%}
+.contact-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.contact-left h2{font-family:var(--ff-h);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing:0.01em;margin-bottom:1.25rem}
+.contact-left h2 em{color:var(--gold);font-style:italic}
+.contact-left p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.9;font-weight:300;letter-spacing:0.03em;margin-bottom:2rem}
+.contact-details{display:flex;flex-direction:column;gap:1.25rem}
+.contact-detail{display:flex;flex-direction:column;gap:4px}
+.contact-detail-label{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.contact-detail-value{font-size:0.82rem;color:rgba(255,255,255,0.6);letter-spacing:0.03em}
+.contact-detail-value a{color:var(--gold);text-decoration:none}
+.contact-detail-value a:hover{color:var(--gold2)}
+.contact-form{background:var(--ink2);border:1px solid var(--border);padding:2.5rem}
+.fgroup{margin-bottom:1.1rem}
+.fgroup label{display:block;font-size:0.6rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);margin-bottom:0.45rem}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;padding:0.75rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--ff-b);font-size:0.82rem;font-weight:300;outline:none;transition:border-color 0.3s;letter-spacing:0.02em}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:rgba(184,154,106,0.5)}
+.fgroup input::placeholder,.fgroup textarea::placeholder{color:rgba(255,255,255,0.18)}
+.fgroup select option{background:var(--ink2)}
+.fgrow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.form-submit{width:100%;background:var(--gold);color:var(--ink);padding:0.9rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem}
+.form-submit:hover{background:var(--gold2)}
+.form-success{display:none;text-align:center;padding:3rem 1rem}
+.form-success h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:var(--white)}
+.form-success p{font-size:0.75rem;color:rgba(255,255,255,0.35);line-height:1.8;letter-spacing:0.03em}
+
+footer{border-top:1px solid var(--border);padding:3rem 5%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--ff-h);font-size:1.25rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase}
+.footer-logo span{color:var(--gold)}
+.footer-nav{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-nav a{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s}
+.footer-nav a:hover{color:rgba(255,255,255,0.6)}
+.footer-legal{width:100%;font-size:0.6rem;letter-spacing:0.06em;color:rgba(255,255,255,0.15);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04)}
+
+@media(max-width:1024px){
+  .corp-hero-inner,.contact-inner{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .markets-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:0 4%}
+  .nav-links a:not(.nav-cta){display:none}
+  .corp-hero{padding:8rem 4% 5rem}
+  .who-section,.offer-section,.markets-section,.contact-section{padding:4rem 4%}
+  .who-grid{grid-template-columns:1fr}
+  .offer-grid{grid-template-columns:1fr}
+  .offer-item{border-right:none!important}
+  .offer-item:nth-last-child(-n+2){border-bottom:1px solid var(--border)}
+  .offer-item:last-child{border-bottom:none}
+  .markets-grid{grid-template-columns:repeat(2,1fr)}
+  .fgrow{grid-template-columns:1fr}
+  .corp-stat-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Prop<span class="logo-dot">·</span>Bridge</a>
+    <div class="nav-links">
+      <a href="/listings.html">Browse</a>
+      <div class="nav-divider"></div>
+      <a href="/how.html">Process</a>
+      <div class="nav-divider"></div>
+      <a href="/corporate.html" class="active">Corporate</a>
+      <div class="nav-divider"></div>
+      <a href="/about.html">About</a>
+      <div class="nav-divider"></div>
+      <a href="#contact" class="nav-cta">Partner With Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="corp-hero">
+  <div class="corp-hero-bg"></div>
+  <div class="corp-hero-inner">
+    <div class="corp-hero-left">
+      <div class="page-overline">Institutional Partnerships</div>
+      <h1>Consistent Deal Flow<br>at <em>Scale</em></h1>
+      <p class="corp-hero-sub">PropBridge partners with iBuyers, institutional funds, family offices, and corporate acquisition teams who require a reliable pipeline of off-market properties across multiple markets — without the overhead of traditional sourcing.</p>
+      <a href="#contact" class="corp-contact-btn" style="display:inline-block;padding:0.9rem 2.5rem;width:auto">Inquire About Partnership</a>
+    </div>
+    <div class="corp-hero-right">
+      <div class="corp-stat-grid">
+        <div class="corp-stat">
+          <div class="corp-stat-n">10+</div>
+          <div class="corp-stat-l">Active Markets</div>
+        </div>
+        <div class="corp-stat">
+          <div class="corp-stat-n">48</div>
+          <div class="corp-stat-l">States Covered</div>
+        </div>
+        <div class="corp-stat">
+          <div class="corp-stat-n">7–21</div>
+          <div class="corp-stat-l">Days to Close</div>
+        </div>
+        <div class="corp-stat">
+          <div class="corp-stat-n">2.5%</div>
+          <div class="corp-stat-l">Platform Fee Only</div>
+        </div>
+      </div>
+      <a href="#contact" class="corp-contact-btn">Schedule a Partnership Call</a>
+      <p class="corp-contact-note">Response within one business day</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="who-section">
+  <div class="who-inner">
+    <div class="section-overline">Who We Work With</div>
+    <h2 class="section-title">Built for Serious<br><em>Acquisition Teams</em></h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-num">01</div>
+        <div class="who-line"></div>
+        <h3>iBuyers</h3>
+        <p>Technology-driven home buyers who require consistent, high-volume deal flow across multiple metropolitan markets. PropBridge provides a steady pipeline of motivated sellers ready for fast, as-is transactions.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-num">02</div>
+        <div class="who-line"></div>
+        <h3>Institutional Funds</h3>
+        <p>Real estate investment funds building single-family rental portfolios. Access off-market inventory at scale across Sun Belt and Midwest markets — without the cost of internal acquisition teams.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-num">03</div>
+        <div class="who-line"></div>
+        <h3>Corporate Buyers</h3>
+        <p>Companies like Invitation Homes, Progress Residential, and similar operators who purchase properties at volume. PropBridge delivers pre-qualified seller leads filtered to your exact acquisition criteria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section class="offer-section">
+  <div class="offer-inner">
+    <div class="section-overline">The Partnership</div>
+    <h2 class="section-title">What PropBridge<br><em>Delivers</em></h2>
+    <div class="offer-grid">
+      <div class="offer-item">
+        <div class="offer-tag">Pipeline</div>
+        <h3>Weekly Deal Sheets</h3>
+        <p>Receive a curated weekly report of all new motivated seller listings in your target markets — filtered by price range, property type, condition, and seller timeline. Delivered directly to your acquisition team.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-tag">Coverage</div>
+        <h3>Multi-Market Inventory</h3>
+        <p>Access off-market deals across 10+ major US markets simultaneously. Scale your acquisition volume without proportionally expanding your sourcing overhead or internal team headcount.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-tag">Access</div>
+        <h3>First-Look Exclusivity</h3>
+        <p>Partner organizations receive priority access to new listings before they are visible to the broader PropBridge network — giving your team a meaningful head start on competitive off-market opportunities.</p>
+      </div>
+      <div class="offer-item">
+        <div class="offer-tag">Economics</div>
+        <h3>Simple Fee Structure</h3>
+        <p>A 2.5% platform fee collected at closing only. No subscription fees, no monthly retainers, no per-lead charges. Your acquisition cost is fully variable and tied exclusively to closed transactions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section class="markets-section">
+  <div class="markets-inner">
+    <div class="section-overline">Coverage</div>
+    <h2 class="section-title">Active <em>Markets</em></h2>
+    <div class="markets-grid">
+      <div class="market-item"><div class="market-city">Houston</div><div class="market-state">Texas</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Atlanta</div><div class="market-state">Georgia</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Memphis</div><div class="market-state">Tennessee</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Dallas</div><div class="market-state">Texas</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Detroit</div><div class="market-state">Michigan</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Cleveland</div><div class="market-state">Ohio</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Jacksonville</div><div class="market-state">Florida</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Birmingham</div><div class="market-state">Alabama</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Kansas City</div><div class="market-state">Missouri</div><div class="market-status">Active</div></div>
+      <div class="market-item"><div class="market-city">Philadelphia</div><div class="market-state">Pennsylvania</div><div class="market-status">Active</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-overline">Get In Touch</div>
+      <h2>Begin a<br><em>Partnership</em></h2>
+      <p>If your organization acquires residential properties at scale and requires consistent off-market deal flow, we would welcome the opportunity to discuss how PropBridge can serve your acquisition strategy.</p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value"><a href="mailto:daniel@propbridgehomes.com">daniel@propbridgehomes.com</a></span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Response Time</span>
+          <span class="contact-detail-value">Within one business day</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Minimum Volume</span>
+          <span class="contact-detail-value">No minimum — all acquisition scales welcome</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form" id="cform-wrap">
+      <div class="fgroup"><label>Full Name</label><input type="text" id="cn" placeholder="Your name"></div>
+      <div class="fgroup"><label>Company</label><input type="text" id="cc" placeholder="Company name"></div>
+      <div class="fgroup"><label>Title</label><input type="text" id="ct" placeholder="e.g. Director of Acquisitions"></div>
+      <div class="fgroup"><label>Email Address</label><input type="email" id="ce" placeholder="you@company.com"></div>
+      <div class="fgroup"><label>Phone Number</label><input type="tel" id="cp" placeholder="(555) 000-0000"></div>
+      <div class="fgroup"><label>Organization Type</label>
+        <select id="ctype">
+          <option>iBuyer</option>
+          <option>Institutional Fund</option>
+          <option>Corporate Buyer / SFR Operator</option>
+          <option>Family Office</option>
+          <option>Wholesale Aggregator</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fgroup"><label>Target Markets</label><input type="text" id="cmkt" placeholder="e.g. Houston, Atlanta, Memphis"></div>
+      <div class="fgroup"><label>Monthly Acquisition Volume</label>
+        <select id="cvol">
+          <option>1–5 properties/month</option>
+          <option>5–20 properties/month</option>
+          <option>20–50 properties/month</option>
+          <option>50+ properties/month</option>
+        </select>
+      </div>
+      <div class="fgroup"><label>Additional Information</label><textarea id="cnotes" rows="3" placeholder="Tell us about your acquisition strategy and what you're looking for..."></textarea></div>
+      <button class="form-submit" onclick="submitPartnership()">Submit Partnership Inquiry</button>
+    </div>
+    <div class="form-success" id="cform-success" style="display:none">
+      <h3>Inquiry Received</h3>
+      <p>Thank you for your interest in partnering with PropBridge. A member of our team will be in contact within one business day to discuss how we can support your acquisition strategy.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Prop<span>·</span>Bridge</div>
+    <nav class="footer-nav">
+      <a href="/listings.html">Browse</a>
+      <a href="/how.html">Process</a>
+      <a href="/corporate.html">Corporate</a>
+      <a href="/about.html">About</a>
+      <a href="mailto:daniel@propbridgehomes.com">Contact</a>
+    </nav>
+    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+  </div>
+</footer>
+
+<script>
+async function submitPartnership(){
+  const n=document.getElementById('cn').value.trim();
+  const e=document.getElementById('ce').value.trim();
+  const c=document.getElementById('cc').value.trim();
+  if(!n||!e||!c){alert('Please fill in your name, company, and email.');return}
+  const btn=document.querySelector('.form-submit');btn.textContent='Submitting...';btn.disabled=true;
+  try{
+    await fetch('https://propbridge-backend-production.up.railway.app/api/users/register',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:e,name:n,phone:document.getElementById('cp').value,
+        role:'contractor',company:c,
+        markets:[document.getElementById('cmkt').value],
+        password:Math.random().toString(36).slice(2)+'Pb1!'
+      })
+    });
+  }catch{}
+  document.getElementById('cform-wrap').style.display='none';
+  document.getElementById('cform-success').style.display='block';
+}
+</script>
+</body>
+</html>
