@@ -183,14 +183,18 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">Prop<span class="logo-dot">·</span>Bridge</a>
-    <div class="nav-links">
-      <a href="/listings.html">Browse</a>
+        <div class="nav-links">
+      <a href="/" class="active">Home</a>
       <div class="nav-divider"></div>
-      <a href="/how.html">Process</a>
+      <a href="/listings.html">Listings</a>
+      <div class="nav-divider"></div>
+      <a href="/how.html">How It Works</a>
       <div class="nav-divider"></div>
       <a href="/corporate.html">Corporate</a>
       <div class="nav-divider"></div>
       <a href="/about.html">About</a>
+      <div class="nav-divider"></div>
+      <a href="/contact.html">Contact</a>
       <div class="nav-divider"></div>
       <a href="#" onclick="openModal();return false" class="nav-cta">List Property</a>
     </div>
@@ -314,11 +318,13 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   <div class="footer-inner">
     <div class="footer-logo">Prop<span>·</span>Bridge</div>
     <nav class="footer-nav">
+      <a href="/" class="active">Home</a>
+      <div class="nav-divider"></div>
       <a href="/listings.html">Browse</a>
       <a href="/how.html">Process</a>
       <a href="/corporate.html">Corporate</a>
       <a href="/about.html">About</a>
-      <a href="mailto:daniel@propbridgehomes.com">Contact</a>
+      <a href="/contact.html">Contact</a>
     </nav>
     <p class="footer-legal">© 2025 PropBridge. All rights reserved. PropBridge is not a licensed real estate brokerage or agent. Platform fee of 2.5% collected at closing only. &nbsp;|&nbsp; daniel@propbridgehomes.com &nbsp;|&nbsp; Houston · Atlanta · Memphis · Dallas · Detroit · Cleveland · Jacksonville · Birmingham · Kansas City · Philadelphia</p>
   </div>
@@ -341,7 +347,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
       <div class="fgrow">
         <div class="fgroup"><label>Asking Price</label><input type="text" id="sq" placeholder="$250,000"></div>
         <div class="fgroup"><label>Property Type</label>
-          <select id="st"><option value="single_family">Single Family</option><option value="multi_family">Multi-Family</option><option value="condo">Condo / Townhouse</option><option value="land">Land / Lot</option><option value="commercial">Commercial</option></select>
+          <select id="st"><option value="single_family">Single Family Home</option><option value="apartment_complex">Apartment Complex</option><option value="duplex">Duplex / Triplex</option><option value="multi_family">Multi-Family</option><option value="condo">Condo / Townhouse</option><option value="land">Land / Lot</option><option value="commercial">Commercial</option></select>
         </div>
       </div>
       <div class="fgrow">
