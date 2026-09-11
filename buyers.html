@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get Off-Market Deals First | PropBridge</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#0c0c0a; --ivory:#f5f3ee; --gold:#b89a6a; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--black); color:var(--ivory); font-family:'Inter',sans-serif; }
+  .hero { position:relative; padding:96px 24px 72px; max-width:780px; margin:0 auto; text-align:center; }
+  .corner { position:absolute; width:28px; height:28px; border:1px solid var(--gold); opacity:.6; }
+  .tl{top:24px;left:24px;border-right:none;border-bottom:none;}
+  .tr{top:24px;right:24px;border-left:none;border-bottom:none;}
+  .bl{bottom:24px;left:24px;border-right:none;border-top:none;}
+  .br{bottom:24px;right:24px;border-left:none;border-top:none;}
+  .eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:12px;color:var(--gold);margin-bottom:24px;}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,5vw,52px);line-height:1.15;margin:0 0 20px;}
+  .sub{font-size:16px;line-height:1.6;color:rgba(245,243,238,.7);max-width:520px;margin:0 auto;}
+  .content{max-width:960px;margin:0 auto;padding:0 24px 96px;display:grid;grid-template-columns:1fr;gap:56px;}
+  @media(min-width:860px){.content{grid-template-columns:1fr 1fr;align-items:start;}}
+  .value-list{display:flex;flex-direction:column;gap:32px;}
+  .value-item{display:flex;gap:16px;}
+  .num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:24px;color:var(--gold);min-width:36px;}
+  .value-item h3{font-size:15px;letter-spacing:.04em;margin:0 0 6px;}
+  .value-item p{font-size:14px;line-height:1.6;color:rgba(245,243,238,.65);margin:0;}
+  .lead-form{border:1px solid rgba(184,154,106,.25);padding:32px;background:rgba(255,255,255,.02);}
+  .lead-form h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26px;margin:0 0 24px;}
+  label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:rgba(245,243,238,.6);margin-bottom:18px;}
+  input{display:block;width:100%;margin-top:8px;background:transparent;border:none;border-bottom:1px solid rgba(184,154,106,.35);color:var(--ivory);font-size:15px;padding:8px 2px;font-family:'Inter',sans-serif;}
+  input:focus{outline:none;border-bottom-color:var(--gold);}
+  button{margin-top:12px;width:100%;background:var(--gold);color:#0c0c0a;border:none;padding:14px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;font-family:'Inter',sans-serif;}
+</style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <p class="eyebrow">PropBridge</p>
+      <h1>Off-market deals, before anyone else sees them.</h1>
+      <p class="sub">We source directly from motivated sellers in Houston and Atlanta. Tell us your buy box and we'll bring you deals that fit — no assignments, no markup.</p>
+    </section>
+    <section class="content">
+      <div class="value-list">
+        <div class="value-item"><span class="num">01</span><div><h3>Direct from sellers</h3><p>You close directly with the seller through a normal title process.</p></div></div>
+        <div class="value-item"><span class="num">02</span><div><h3>Matched to your buy box</h3><p>Tell us your criteria once — we only send what actually fits.</p></div></div>
+        <div class="value-item"><span class="num">03</span><div><h3>First look</h3><p>Verified buyers get new off-market deals before they go anywhere else.</p></div></div>
+      </div>
+
+      <!-- FORM: this "action" line is the one thing you'll edit — see instructions -->
+      <form class="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <h2>Get on the buyer list</h2>
+        <label>Your name<input required type="text" name="name" placeholder="Full name"></label>
+        <label>Phone or email<input required type="text" name="contact" placeholder="Best way to reach you"></label>
+        <label>Target markets<input required type="text" name="markets" placeholder="e.g. Houston, Atlanta"></label>
+        <label>Price range<input type="text" name="price_range" placeholder="e.g. $80K–$200K"></label>
+        <label>Property type / condition<input type="text" name="property_type" placeholder="e.g. single family, any condition"></label>
+        <button type="submit">Join the buyer list</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
