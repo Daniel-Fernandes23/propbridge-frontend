@@ -222,6 +222,84 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   </div>
 </footer>
 
+<script>
+const BE='https://propbridge-backend-production.up.railway.app';
+const demo=[
+  {id:'d1',price:189000,address:'742 Maple Ave',city:'Houston',state:'TX',bedrooms:3,bathrooms:1.5,sqft:1240,badge:'Motivated Seller',tags:['Fix & Flip','As-Is','Below Market'],timeline:'asap',created_at:new Date(Date.now()-2*864e5).toISOString()},
+  {id:'d2',price:315000,address:'1891 Oak Blvd',city:'Atlanta',state:'GA',bedrooms:4,bathrooms:2,sqft:1890,badge:'Price Reduced',tags:['BRRR Strategy','Cash Flow+'],timeline:'1_3_months',created_at:new Date(Date.now()-5*864e5).toISOString()},
+  {id:'d3',price:97500,address:'304 Pine St',city:'Memphis',state:'TN',bedrooms:2,bathrooms:1,sqft:980,badge:'Immediate',tags:['Deep Discount','Needs Rehab'],timeline:'asap',created_at:new Date(Date.now()-864e5).toISOString()},
+  {id:'d4',price:422000,address:'5510 Sunset Dr',city:'Dallas',state:'TX',bedrooms:4,bathrooms:3,sqft:2210,badge:'Off-Market',tags:['Turnkey','Motivated'],timeline:'flexible',created_at:new Date(Date.now()-8*864e5).toISOString()},
+  {id:'d5',price:138000,address:'67 Elm Court',city:'Atlanta',state:'GA',bedrooms:3,bathrooms:1,sqft:1100,badge:'Probate',tags:['Estate Sale','Quick Close'],timeline:'asap',created_at:new Date(Date.now()-3*864e5).toISOString()},
+  {id:'d6',price:275500,address:'2203 River Rd',city:'Houston',state:'TX',bedrooms:3,bathrooms:2,sqft:1560,badge:'New',tags:['Growing Market','FSBO'],timeline:'1_3_months',created_at:new Date(Date.now()).toISOString()},
+];
+let all=[];
+
+function daysAgo(iso){
+  const d=Math.floor((Date.now()-new Date(iso).getTime())/864e5);
+  return d===0?'Today':d===1?'1 day ago':d+' days ago';
+}
+
+async function load(){
+  try{
+    const r=await fetch(BE+'/api/listings');
+    if(r.ok){const d=await r.json();all=d.listings?.length?d.listings:demo}
+    else all=demo;
+  }catch{all=demo}
+  render(all);
+}
+
+function render(list){
+  const g=document.getElementById('lg');
+  document.getElementById('listing-count').textContent=`${list.length} properties available`;
+  if(!list.length){
+    g.innerHTML=`<div class="empty"><div class="empty-line"></div><h3>No listings found</h3><p>Try adjusting your filters or check back shortly.</p></div>`;
+    return;
+  }
+  g.innerHTML=list.map(l=>`
+    <div class="lcard">
+      <div class="lcard-top">
+        <span class="lcard-badge ${l.timeline==='asap'?'urgent':''}">${l.badge||'Available'}</span>
+        <span class="lcard-date">${daysAgo(l.created_at||new Date().toISOString())}</span>
+      </div>
+      <div class="lcard-price">$${Number(l.price).toLocaleString()}</div>
+      <div class="lcard-addr">${l.address} · ${l.city}, ${l.state}</div>
+      <div class="lcard-rule"></div>
+      <div class="lcard-specs">
+        ${l.bedrooms?`<div class="spec"><span class="spec-val">${l.bedrooms}</span><span class="spec-lbl">Bedrooms</span></div>`:''}
+        ${l.bathrooms?`<div class="spec"><span class="spec-val">${l.bathrooms}</span><span class="spec-lbl">Bathrooms</span></div>`:''}
+        ${l.sqft?`<div class="spec"><span class="spec-val">${Number(l.sqft).toLocaleString()}</span><span class="spec-lbl">Sq Ft</span></div>`:''}
+        <div class="spec"><span class="spec-val">${l.timeline==='asap'?'Immediate':l.timeline==='flexible'?'Flexible':'1–3 mo'}</span><span class="spec-lbl">Timeline</span></div>
+      </div>
+      <div class="lcard-tags">${(l.tags||[]).map(t=>`<span class="ltag">${t}</span>`).join('')}</div>
+      <div class="lcard-cta">
+        <a href="#register" class="lcard-cta-text">Request Information</a>
+        <span class="lcard-arrow">→</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterL(f,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  let r=all;
+  if(['Houston','Atlanta','Memphis','Dallas'].includes(f))r=all.filter(l=>l.city===f);
+  else if(f==='asap')r=all.filter(l=>l.timeline==='asap');
+  else if(f==='u200')r=all.filter(l=>Number(l.price)<200000);
+  else if(f==='multi')r=all.filter(l=>['multi_family','apartment_complex','duplex'].includes(l.property_type));
+  render(r);
+}
+
+async function submitReg(){
+  const e=document.getElementById('re').value.trim(),f=document.getElementById('rf').value.trim();
+  if(!e||!f){alert('Please fill in your name and email.');return}
+  try{await fetch(BE+'/api/users/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,name:`${f} ${document.getElementById('rl').value}`.trim(),phone:document.getElementById('rp').value,role:'contractor',markets:[document.getElementById('rm').value],password:Math.random().toString(36).slice(2)+'Pb1!'})})}catch{}
+  document.getElementById('rform').style.display='none';document.getElementById('rsucc').style.display='flex';
+  document.getElementById('rsucc').style.flexDirection='column';
+  document.getElementById('rsucc').style.alignItems='center';
+}
+
+load();
+</script>
 <script src="/modal.js"></script>
 </body>
 </html>
