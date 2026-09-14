@@ -243,6 +243,7 @@ async function submitContact(){
         email:em,
         name:`${fn} ${document.getElementById('ln').value}`.trim(),
         phone:document.getElementById('ph').value,
+        message:msg,
         role:'seller',
         password:Math.random().toString(36).slice(2)+'Pb1!'
       })
