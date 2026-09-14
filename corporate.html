@@ -91,7 +91,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .market-status{display:inline-block;margin-top:0.75rem;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);padding:0.2rem 0.6rem;border:1px solid rgba(184,154,106,0.3)}
 
 /* CONTACT FORM */
-.contact-section{padding:7rem 5%}
+.contact-section{padding:7rem 5%;scroll-margin-top:90px}
 .contact-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
 .contact-left h2{font-family:var(--ff-h);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;letter-spacing:0.01em;margin-bottom:1.25rem}
 .contact-left h2 em{color:var(--gold);font-style:italic}
@@ -177,7 +177,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
       <div class="page-overline">Institutional Partnerships</div>
       <h1>Consistent Deal Flow<br>at <em>Scale</em></h1>
       <p class="corp-hero-sub">PropBridge partners with iBuyers, institutional funds, family offices, and corporate acquisition teams who require a reliable pipeline of off-market properties across multiple markets — without the overhead of traditional sourcing.</p>
-      <a href="#contact" class="corp-contact-btn" style="display:inline-block;padding:0.9rem 2.5rem;width:auto">Inquire About Partnership</a>
+      <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;" class="corp-contact-btn" style="display:inline-block;padding:0.9rem 2.5rem;width:auto">Inquire About Partnership</a>
     </div>
     <div class="corp-hero-right">
       <div class="corp-stat-grid">
@@ -198,7 +198,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
           <div class="corp-stat-l">Platform Fee Only</div>
         </div>
       </div>
-      <a href="#contact" class="corp-contact-btn">Schedule a Partnership Call</a>
+      <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;" class="corp-contact-btn">Schedule a Partnership Call</a>
       <p class="corp-contact-note">Response within one business day</p>
     </div>
   </div>

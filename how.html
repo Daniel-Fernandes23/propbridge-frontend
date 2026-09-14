@@ -396,6 +396,19 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   </div>
 </footer>
 
+<script>
+function showPanel(panel,btn){
+  document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.process-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+panel).classList.add('active');
+}
+
+function tfaq(el){
+  const a=el.querySelector('.faq-a'),i=el.querySelector('.faq-icon');
+  a.classList.toggle('open');i.classList.toggle('open');
+}
+</script>
 <script src="/modal.js"></script>
 </body>
 </html>
