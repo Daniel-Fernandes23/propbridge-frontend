@@ -111,22 +111,6 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
 .footer-nav a:hover{color:rgba(255,255,255,0.6)}
 .footer-legal{width:100%;font-size:0.6rem;letter-spacing:0.06em;color:rgba(255,255,255,0.15);padding-top:2rem;border-top:1px solid rgba(255,255,255,0.04)}
 
-/* MODAL */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
-.overlay.open{display:flex}
-.modal{background:var(--ink2);border:1px solid var(--border);padding:3rem;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.modal-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-.modal h2{font-family:var(--ff-h);font-size:1.85rem;font-weight:300;color:var(--white);letter-spacing:0.02em;margin-bottom:0.35rem}
-.modal .sub{font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em}
-.xbtn{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);cursor:pointer;font-size:1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-.xbtn:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7)}
-.fee-note{background:rgba(184,154,106,0.06);border-left:2px solid var(--gold);padding:0.85rem 1.1rem;margin-bottom:2rem;font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:0.02em}
-.fee-note strong{color:var(--gold)}
-.modal-submit{width:100%;background:var(--gold);color:var(--ink);padding:0.9rem;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--ff-b);border:none;cursor:pointer;transition:background 0.3s;margin-top:0.5rem}
-.modal-submit:hover{background:var(--gold2)}
-.modal-success{display:none;text-align:center;padding:3rem 1rem}
-.modal-success h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:var(--white)}
-.modal-success p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.8;letter-spacing:0.03em}
 
 @media(max-width:768px){
   nav{padding:0 4%}
@@ -138,6 +122,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   .filters-bar{padding:1.25rem 4%}
 }
 </style>
+<link rel="stylesheet" href="/modal.css">
 </head>
 <body>
 
@@ -237,133 +222,6 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   </div>
 </footer>
 
-<!-- SELL MODAL -->
-<div class="overlay" id="smodal">
-  <div class="modal">
-    <button class="xbtn" onclick="closeModal()">×</button>
-    <div id="sform">
-      <div class="modal-header">
-        <h2>List Your Property</h2>
-        <p class="sub">Complimentary listing · Cash buyers notified within 24 hours</p>
-      </div>
-      <div class="fee-note">PropBridge charges <strong>no upfront fee</strong>. Our <strong>2.5% platform fee</strong> is collected at closing only.</div>
-      <div class="fgroup"><label>Full Name</label><input type="text" id="sn" placeholder="Your name"></div>
-      <div class="fgroup"><label>Email Address</label><input type="email" id="se" placeholder="your@email.com"></div>
-      <div class="fgroup"><label>Phone Number</label><input type="tel" id="sp" placeholder="(555) 000-0000"></div>
-      <div class="fgroup"><label>Property Address</label><input type="text" id="sa" placeholder="123 Main St, Houston, TX 77001"></div>
-      <div class="fgrow">
-        <div class="fgroup"><label>Asking Price</label><input type="text" id="sq" placeholder="$250,000"></div>
-        <div class="fgroup"><label>Property Type</label>
-          <select id="st"><option value="single_family">Single Family Home</option><option value="multi_family">Multi-Family</option><option value="apartment_complex">Apartment Complex</option><option value="duplex">Duplex / Triplex</option><option value="condo">Condo / Townhouse</option><option value="land">Land / Lot</option><option value="commercial">Commercial</option></select>
-        </div>
-      </div>
-      <div class="fgrow">
-        <div class="fgroup"><label>Bedrooms</label><input type="number" id="sb" placeholder="3" min="0"></div>
-        <div class="fgroup"><label>Bathrooms</label><input type="number" id="sba" placeholder="2" min="0" step="0.5"></div>
-      </div>
-      <div class="fgroup"><label>Selling Timeline</label>
-        <select id="stl"><option value="asap">As Soon As Possible</option><option value="1_3_months">1–3 Months</option><option value="3_6_months">3–6 Months</option><option value="flexible">Flexible</option></select>
-      </div>
-      <div class="fgroup"><label>Additional Notes</label><textarea id="sno" rows="2" style="width:100%;padding:0.7rem 1rem;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--ff-b);font-size:0.82rem;font-weight:300;outline:none;resize:vertical" placeholder="Property condition, reason for selling..."></textarea></div>
-      <button class="modal-submit" id="sbtn" onclick="submitListing()">Submit Listing</button>
-    </div>
-    <div class="modal-success" id="ssucc">
-      <h3>Listing Received</h3>
-      <p>Your property is now live on PropBridge. Verified cash buyers have been notified. Expect inquiries within 24–48 hours.</p>
-    </div>
-  </div>
-</div>
-
-<script>
-const BE='https://propbridge-backend-production.up.railway.app';
-const demo=[
-  {id:'d1',price:189000,address:'742 Maple Ave',city:'Houston',state:'TX',bedrooms:3,bathrooms:1.5,sqft:1240,badge:'Motivated Seller',tags:['Fix & Flip','As-Is','Below Market'],timeline:'asap',created_at:new Date(Date.now()-2*864e5).toISOString()},
-  {id:'d2',price:315000,address:'1891 Oak Blvd',city:'Atlanta',state:'GA',bedrooms:4,bathrooms:2,sqft:1890,badge:'Price Reduced',tags:['BRRR Strategy','Cash Flow+'],timeline:'1_3_months',created_at:new Date(Date.now()-5*864e5).toISOString()},
-  {id:'d3',price:97500,address:'304 Pine St',city:'Memphis',state:'TN',bedrooms:2,bathrooms:1,sqft:980,badge:'Immediate',tags:['Deep Discount','Needs Rehab'],timeline:'asap',created_at:new Date(Date.now()-864e5).toISOString()},
-  {id:'d4',price:422000,address:'5510 Sunset Dr',city:'Dallas',state:'TX',bedrooms:4,bathrooms:3,sqft:2210,badge:'Off-Market',tags:['Turnkey','Motivated'],timeline:'flexible',created_at:new Date(Date.now()-8*864e5).toISOString()},
-  {id:'d5',price:138000,address:'67 Elm Court',city:'Atlanta',state:'GA',bedrooms:3,bathrooms:1,sqft:1100,badge:'Probate',tags:['Estate Sale','Quick Close'],timeline:'asap',created_at:new Date(Date.now()-3*864e5).toISOString()},
-  {id:'d6',price:275500,address:'2203 River Rd',city:'Houston',state:'TX',bedrooms:3,bathrooms:2,sqft:1560,badge:'New',tags:['Growing Market','FSBO'],timeline:'1_3_months',created_at:new Date(Date.now()).toISOString()},
-];
-let all=[];
-
-function daysAgo(iso){
-  const d=Math.floor((Date.now()-new Date(iso).getTime())/864e5);
-  return d===0?'Today':d===1?'1 day ago':d+' days ago';
-}
-
-async function load(){
-  try{
-    const r=await fetch(BE+'/api/listings');
-    if(r.ok){const d=await r.json();all=d.listings?.length?d.listings:demo}
-    else all=demo;
-  }catch{all=demo}
-  render(all);
-}
-
-function render(list){
-  const g=document.getElementById('lg');
-  document.getElementById('listing-count').textContent=`${list.length} properties available`;
-  if(!list.length){
-    g.innerHTML=`<div class="empty"><div class="empty-line"></div><h3>No listings found</h3><p>Try adjusting your filters or check back shortly.</p></div>`;
-    return;
-  }
-  g.innerHTML=list.map(l=>`
-    <div class="lcard">
-      <div class="lcard-top">
-        <span class="lcard-badge ${l.timeline==='asap'?'urgent':''}">${l.badge||'Available'}</span>
-        <span class="lcard-date">${daysAgo(l.created_at||new Date().toISOString())}</span>
-      </div>
-      <div class="lcard-price">$${Number(l.price).toLocaleString()}</div>
-      <div class="lcard-addr">${l.address} · ${l.city}, ${l.state}</div>
-      <div class="lcard-rule"></div>
-      <div class="lcard-specs">
-        ${l.bedrooms?`<div class="spec"><span class="spec-val">${l.bedrooms}</span><span class="spec-lbl">Bedrooms</span></div>`:''}
-        ${l.bathrooms?`<div class="spec"><span class="spec-val">${l.bathrooms}</span><span class="spec-lbl">Bathrooms</span></div>`:''}
-        ${l.sqft?`<div class="spec"><span class="spec-val">${Number(l.sqft).toLocaleString()}</span><span class="spec-lbl">Sq Ft</span></div>`:''}
-        <div class="spec"><span class="spec-val">${l.timeline==='asap'?'Immediate':l.timeline==='flexible'?'Flexible':'1–3 mo'}</span><span class="spec-lbl">Timeline</span></div>
-      </div>
-      <div class="lcard-tags">${(l.tags||[]).map(t=>`<span class="ltag">${t}</span>`).join('')}</div>
-      <div class="lcard-cta">
-        <a href="#register" class="lcard-cta-text">Request Information</a>
-        <span class="lcard-arrow">→</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-function filterL(f,btn){
-  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-  let r=all;
-  if(['Houston','Atlanta','Memphis','Dallas'].includes(f))r=all.filter(l=>l.city===f);
-  else if(f==='asap')r=all.filter(l=>l.timeline==='asap');
-  else if(f==='u200')r=all.filter(l=>Number(l.price)<200000);
-  else if(f==='multi')r=all.filter(l=>['multi_family','apartment_complex','duplex'].includes(l.property_type));
-  render(r);
-}
-
-function openModal(){document.getElementById('smodal').classList.add('open')}
-function closeModal(){document.getElementById('smodal').classList.remove('open')}
-document.getElementById('smodal').addEventListener('click',e=>{if(e.target===document.getElementById('smodal'))closeModal()});
-
-async function submitListing(){
-  const n=document.getElementById('sn').value.trim(),e=document.getElementById('se').value.trim(),a=document.getElementById('sa').value.trim(),p=document.getElementById('sq').value.replace(/[^0-9]/g,'');
-  if(!n||!e||!a||!p){alert('Please complete all required fields.');return}
-  const btn=document.getElementById('sbtn');btn.textContent='Submitting...';btn.disabled=true;
-  const pts=a.split(',');
-  try{await fetch(BE+'/api/listings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({seller_name:n,seller_email:e,seller_phone:document.getElementById('sp').value,address:pts[0]?.trim()||a,city:pts[1]?.trim()||'',state:pts[2]?.trim().split(' ')[0]||'',zip:pts[2]?.trim().split(' ')[1]||'',price:p,property_type:document.getElementById('st').value,bedrooms:document.getElementById('sb').value,bathrooms:document.getElementById('sba').value,timeline:document.getElementById('stl').value,notes:document.getElementById('sno').value})})}catch{}
-  document.getElementById('sform').style.display='none';document.getElementById('ssucc').style.display='block';load();
-}
-
-async function submitReg(){
-  const e=document.getElementById('re').value.trim(),f=document.getElementById('rf').value.trim();
-  if(!e||!f){alert('Please fill in your name and email.');return}
-  try{await fetch(BE+'/api/users/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,name:`${f} ${document.getElementById('rl').value}`.trim(),phone:document.getElementById('rp').value,role:'contractor',markets:[document.getElementById('rm').value],password:Math.random().toString(36).slice(2)+'Pb1!'})})}catch{}
-  document.getElementById('rform').style.display='none';document.getElementById('rsucc').style.display='flex';
-  document.getElementById('rsucc').style.flexDirection='column';
-  document.getElementById('rsucc').style.alignItems='center';
-}
-
-load();
-</script>
+<script src="/modal.js"></script>
 </body>
 </html>
