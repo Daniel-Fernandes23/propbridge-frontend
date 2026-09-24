@@ -22,3 +22,5 @@
 .modal-success-line{width:40px;height:1px;background:var(--gold);margin:0 auto 2rem}
 .modal-success h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:var(--white)}
 .modal-success p{font-size:0.78rem;color:rgba(255,255,255,0.35);line-height:1.8;letter-spacing:0.03em}
+
+.pay-note{font-size:0.65rem!important;margin-top:1rem;color:rgba(255,255,255,0.25)!important}
