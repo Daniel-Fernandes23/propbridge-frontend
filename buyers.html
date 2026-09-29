@@ -6,7 +6,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <title>Buyer Access | PropBridge</title>
-<meta name="description" content="Get off-market deals in Houston and Atlanta direct from sellers. Flat $199 one-time or $79/month buyer access, never a percentage of any deal.">
+<meta name="description" content="Get off-market deals in Houston and Atlanta direct from sellers. Founding Member buyer access at $29/month for the first 25 buyers, never a percentage of any deal.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--ink:#080808;--ink2:#111111;--gold:#B89A6A;--gold2:#D4B483;--white:#FFFFFF;--border:rgba(184,154,106,0.18);--ff-h:'Cormorant Garamond',Georgia,serif;--ff-b:'Inter',system-ui,sans-serif}
@@ -31,9 +31,11 @@ footer{border-top:1px solid var(--border);padding:3rem 5%;margin-top:6rem}
 .footer-legal{font-size:0.62rem;letter-spacing:0.06em;color:rgba(255,255,255,0.22);line-height:1.8}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
 @media(max-width:768px){.nav-links a:not(.nav-cta),.nav-divider{display:none}.corner{display:none}.hero{padding:8rem 5% 3rem}}
-.plans{max-width:880px;width:90%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.plans{max-width:560px;width:90%;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
 .plan{background:var(--ink);padding:3rem 2.75rem;display:flex;flex-direction:column}
 .plan.featured{background:#0e0d0b}
+.badge{align-self:flex-start;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,154,106,0.4);padding:0.4rem 0.75rem;margin-bottom:1.5rem}
+.regular{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:0.6rem;text-decoration:line-through}
 .plan-name{font-family:var(--ff-h);font-size:1.6rem;font-weight:400;margin-bottom:0.35rem}
 .plan-for{font-size:0.8rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;font-weight:300}
 .price{font-family:var(--ff-h);font-weight:300;font-size:4rem;line-height:1;color:var(--gold)}
@@ -86,33 +88,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid var(-
     <p class="hero-sub">We work directly with motivated sellers in Houston and Atlanta. You deal with them directly and close through a normal title process, with no assignment fee and no markup on the price.</p>
   </section>
 
-  <section class="plans" aria-label="Buyer access plans">
-    <div class="plan">
-      <div class="plan-name">Monthly access</div>
-      <p class="plan-for">For buyers who want to see every new deal as it comes in.</p>
-      <div class="price">$79<small>per month</small></div>
-      <ul>
-        <li>Every new off-market listing in your markets</li>
-        <li>Seller contact details on every listing</li>
-        <li>Deals matched to your buy box</li>
-        <li>Cancel anytime</li>
-      </ul>
-      <a class="btn btn-line" href="https://buy.stripe.com/3cI7sL8jX0Eydhv6om6J202">Start monthly access</a>
-    </div>
+  <section class="plans" aria-label="Founding Member access">
     <div class="plan featured">
-      <div class="plan-name">One-time access</div>
-      <p class="plan-for">For buyers who want a single payment with no subscription.</p>
-      <div class="price">$199<small>one time</small></div>
+      <div class="badge">Founding Member · First 25 buyers only</div>
+      <div class="plan-name">Founding Member access</div>
+      <p class="plan-for">Join early and keep this rate for as long as you stay subscribed.</p>
+      <div class="price">$29<small>per month</small></div>
+      <p class="regular">Regular price $79/month</p>
       <ul>
-        <li>Full access to current off-market listings</li>
-        <li>Seller contact details on every listing</li>
+        <li>Every new off-market listing in Houston and Atlanta</li>
+        <li>Direct seller contact on every listing</li>
         <li>Deals matched to your buy box</li>
-        <li>No recurring charges</li>
+        <li>$29/month locked in while you're subscribed. Cancel anytime</li>
       </ul>
-      <a class="btn btn-gold" href="https://buy.stripe.com/7sY3cvgQtevo2CReUS6J201">Get one-time access</a>
+      <a class="btn btn-gold" href="https://buy.stripe.com/28E00jcAd2MGcdr6om6J203">Become a Founding Member</a>
     </div>
   </section>
-  <p class="fine">Secure checkout by Stripe. Your access fee is never tied to a purchase: there is nothing extra to pay PropBridge when you close.</p>
+  <p class="fine">Secure checkout by Stripe. Limited to our first 25 buyers. Your access fee is never tied to a purchase: there is nothing extra to pay PropBridge when you close.</p>
 
   <section class="buybox">
     <div>
@@ -129,7 +121,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid var(-
     </form>
   </section>
 </main>
-<footer><div class="footer-inner"><p class="footer-legal">© 2026 PropBridge. PropBridge is not a licensed real estate brokerage or agent. Sellers pay a flat $249 listing fee; buyers pay a flat subscription or one-time access fee, never a percentage of any sale. &nbsp;|&nbsp; daniel@propbridgehomes.com</p></div></footer>
+<footer><div class="footer-inner"><p class="footer-legal">© 2026 PropBridge. PropBridge is not a licensed real estate brokerage or agent. Sellers pay a flat $249 listing fee; buyers pay a flat monthly subscription, never a percentage of any sale. &nbsp;|&nbsp; daniel@propbridgehomes.com</p></div></footer>
 <script src="/modal.js"></script>
 </body>
 </html>
