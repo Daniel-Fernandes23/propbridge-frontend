@@ -77,10 +77,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .lcard:hover .lcard-arrow{transform:translateX(4px)}
 
 /* EMPTY STATE */
-.empty{text-align:center;padding:6rem 2rem;grid-column:1/-1}
+.listings-grid:has(.empty){background:transparent;border:none}
+.empty{text-align:center;padding:5rem 2rem;grid-column:1/-1;background:var(--ink,#080808)}
 .empty-line{width:40px;height:1px;background:var(--gold);opacity:0.3;margin:0 auto 2rem}
-.empty h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:rgba(255,255,255,0.5)}
-.empty p{font-size:0.78rem;color:rgba(255,255,255,0.2);letter-spacing:0.04em;line-height:1.8}
+.empty h3{font-family:var(--ff-h);font-size:1.75rem;font-weight:300;margin-bottom:0.75rem;color:rgba(255,255,255,0.85)}
+.empty p{font-size:0.8rem;color:rgba(255,255,255,0.5);letter-spacing:0.04em;line-height:1.8}
 
 /* REGISTER CTA */
 .register-cta{padding:6rem 5%;border-top:1px solid var(--border);text-align:center}
