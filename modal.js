@@ -2,7 +2,7 @@
 // Injected once here and used by every page via <script src="/assets/modal.js"></script>.
 // Editing the form? Change it here — every page picks it up automatically.
 
-const BE = 'https://propbridge-backend-production.up.railway.app';
+const PB_API = 'https://propbridge-backend-production.up.railway.app';
 
 // Founding listings are free. When the $249 fee returns, restore the Stripe payment step:
 // https://buy.stripe.com/3cIcN5eIl3QK0uJ7sq6J200
@@ -73,7 +73,7 @@ async function submitListing() {
   btn.disabled = true;
   const pts = a.split(',');
   try {
-    await fetch(BE + '/api/listings', {
+    await fetch(PB_API + '/api/listings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

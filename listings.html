@@ -224,14 +224,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
 
 <script>
 const BE='https://propbridge-backend-production.up.railway.app';
-const demo=[
-  {id:'d1',price:189000,address:'742 Maple Ave',city:'Houston',state:'TX',bedrooms:3,bathrooms:1.5,sqft:1240,badge:'Motivated Seller',tags:['Fix & Flip','As-Is','Below Market'],timeline:'asap',created_at:new Date(Date.now()-2*864e5).toISOString()},
-  {id:'d2',price:315000,address:'1891 Oak Blvd',city:'Atlanta',state:'GA',bedrooms:4,bathrooms:2,sqft:1890,badge:'Price Reduced',tags:['BRRR Strategy','Cash Flow+'],timeline:'1_3_months',created_at:new Date(Date.now()-5*864e5).toISOString()},
-  {id:'d3',price:97500,address:'304 Pine St',city:'Memphis',state:'TN',bedrooms:2,bathrooms:1,sqft:980,badge:'Immediate',tags:['Deep Discount','Needs Rehab'],timeline:'asap',created_at:new Date(Date.now()-864e5).toISOString()},
-  {id:'d4',price:422000,address:'5510 Sunset Dr',city:'Dallas',state:'TX',bedrooms:4,bathrooms:3,sqft:2210,badge:'Off-Market',tags:['Turnkey','Motivated'],timeline:'flexible',created_at:new Date(Date.now()-8*864e5).toISOString()},
-  {id:'d5',price:138000,address:'67 Elm Court',city:'Atlanta',state:'GA',bedrooms:3,bathrooms:1,sqft:1100,badge:'Probate',tags:['Estate Sale','Quick Close'],timeline:'asap',created_at:new Date(Date.now()-3*864e5).toISOString()},
-  {id:'d6',price:275500,address:'2203 River Rd',city:'Houston',state:'TX',bedrooms:3,bathrooms:2,sqft:1560,badge:'New',tags:['Growing Market','FSBO'],timeline:'1_3_months',created_at:new Date(Date.now()).toISOString()},
-];
+// Sample listings removed: only real, verified listings from the backend are shown.
 let all=[];
 
 function daysAgo(iso){
@@ -242,9 +235,9 @@ function daysAgo(iso){
 async function load(){
   try{
     const r=await fetch(BE+'/api/listings');
-    if(r.ok){const d=await r.json();all=d.listings?.length?d.listings:demo}
-    else all=demo;
-  }catch{all=demo}
+    if(r.ok){const d=await r.json();all=d.listings||[]}
+    else all=[];
+  }catch{all=[]}
   render(all);
 }
 
@@ -252,7 +245,7 @@ function render(list){
   const g=document.getElementById('lg');
   document.getElementById('listing-count').textContent=`${list.length} properties available`;
   if(!list.length){
-    g.innerHTML=`<div class="empty"><div class="empty-line"></div><h3>No listings found</h3><p>Try adjusting your filters or check back shortly.</p></div>`;
+    g.innerHTML=all.length?`<div class="empty"><div class="empty-line"></div><h3>No listings match</h3><p>Try a different filter.</p></div>`:`<div class="empty"><div class="empty-line"></div><h3>Founding listings coming soon</h3><p>We are verifying our first owner-direct properties in Houston and Atlanta now. <a href="/buyers.html" style="color:var(--gold,#B89A6A)">Become a Founding Member</a> to see them first, or <a href="#" onclick="openModal();return false" style="color:var(--gold,#B89A6A)">list your property free</a>.</p></div>`;
     return;
   }
   g.innerHTML=list.map(l=>`
