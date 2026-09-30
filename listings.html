@@ -123,6 +123,34 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   .listings-section,.register-cta{padding:3rem 4%}
   .filters-bar{padding:1.25rem 4%}
 }
+
+/* Founding-stage engagement: sample card, alert signup, coverage */
+.sample-card{border:1px dashed rgba(184,154,106,0.55)!important}
+.sample-flag{position:absolute;top:-0.7rem;left:1.5rem;background:var(--gold);color:var(--ink);font-size:0.58rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:0.3rem 0.7rem}
+.sample-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin:1.25rem 0 0.5rem}
+.sample-photos div{aspect-ratio:4/3;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.member-row{display:flex;justify-content:space-between;gap:1rem;font-size:0.75rem;padding:0.55rem 0;border-top:1px solid var(--border2)}
+.member-row span:first-child{color:rgba(255,255,255,0.35);letter-spacing:0.06em}
+.member-row span:last-child{color:rgba(255,255,255,0.75);text-align:right}
+.notify{grid-column:span 2;border:1px solid var(--border);padding:3rem;display:flex;flex-direction:column;justify-content:center}
+.notify .eyebrow{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.notify h3{font-family:var(--ff-h);font-weight:300;font-size:2.2rem;line-height:1.15;margin-bottom:0.9rem}
+.notify p{font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.8;max-width:520px}
+.notify form{display:flex;gap:0.75rem;margin-top:1.75rem;max-width:520px}
+.notify input{flex:1;background:transparent;border:1px solid rgba(184,154,106,0.35);color:var(--white);padding:0.9rem 1rem;font-family:var(--ff-b);font-size:0.85rem}
+.notify input:focus{outline:none;border-color:var(--gold)}
+.notify button{background:var(--gold);color:var(--ink);border:none;padding:0 1.5rem;font-size:0.62rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;font-family:var(--ff-b)}
+.notify button:hover{background:var(--gold2)}
+.notify-msg{font-size:0.78rem;margin-top:1rem;min-height:1.2em;color:var(--gold2)}
+.spots{display:flex;align-items:center;gap:1rem;margin-top:2.25rem;padding-top:1.75rem;border-top:1px solid var(--border2);font-size:0.78rem;color:rgba(255,255,255,0.6)}
+.spots strong{font-family:var(--ff-h);font-weight:400;font-size:1.9rem;color:var(--gold)}
+.spots a{color:var(--gold);margin-left:auto;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none}
+.coverage{padding:5rem 5% 1rem}
+.coverage-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;border-top:1px solid var(--border2);padding-top:3.5rem}
+.coverage h4{font-family:var(--ff-h);font-weight:400;font-size:1.4rem;margin-bottom:0.75rem}
+.coverage p{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.85}
+.coverage .k{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem}
+@media(max-width:900px){.notify{grid-column:span 1;padding:2rem 1.5rem}.notify form{flex-direction:column}.notify button{padding:0.9rem}.coverage-inner{grid-template-columns:1fr;gap:2rem}}
 </style>
 <link rel="stylesheet" href="/modal.css">
 </head>
@@ -182,10 +210,18 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
   </div>
 </section>
 
+<section class="coverage" aria-label="How PropBridge listings work">
+  <div class="coverage-inner">
+    <div><div class="k">Markets</div><h4>Houston and Atlanta</h4><p>We're starting with owner-direct properties across greater Houston and metro Atlanta, including South Fulton, Decatur, College Park and the surrounding counties.</p></div>
+    <div><div class="k">Verification</div><h4>Every listing confirmed</h4><p>Before a property goes live we confirm the address, asking price and photos with the owner, and that they want to hear from buyers directly. No stale posts, no wholesaler markups.</p></div>
+    <div><div class="k">Deal types</div><h4>What to expect</h4><p>Owner-direct single family and small multifamily: as-is fixers, motivated sellers, price-reduced homes and properties offering owner financing.</p></div>
+  </div>
+</section>
+
 <section class="register-cta" id="register">
   <div class="register-cta-inner">
     <h2>Join the<br><em>Contractor Network</em></h2>
-    <p>Register as a verified contractor or investor to receive deal alerts, access seller contact information, and close faster than any MLS listing.</p>
+    <p>Register as a contractor or investor to receive deal alerts. <a href="/buyers.html" style="color:var(--gold)">Founding Members</a> also get the exact address, photos and seller contact for every listing.</p>
     <div class="register-form">
       <div id="rform">
         <div class="fgrow">
@@ -226,10 +262,64 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
 
 <script>
 const BE='https://propbridge-backend-production.up.railway.app';
+// ---- Update this by hand as Founding Members sign up (must always be accurate) ----
+const FOUNDING_SPOTS_LEFT = 25;
+const FOUNDING_SPOTS_TOTAL = 25;
 // Sample listings removed: only real, verified listings from the backend are shown.
 let all=[];
 
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function foundingStage(){
+  const row=(k,v)=>`<div class="member-row"><span>${k}</span><span>${v}</span></div>`;
+  return `
+  <div class="lcard sample-card" aria-label="Sample listing, not a real property">
+    <span class="sample-flag">Sample: what members see</span>
+    <div class="lcard-top"><span class="lcard-badge">Example only</span><span class="lcard-date">Not a real property</span></div>
+    <div class="lcard-price">$000,000</div>
+    <div class="lcard-addr">123 Example St · City, State</div>
+    <div class="lcard-rule"></div>
+    <div class="lcard-specs">
+      <div class="spec"><span class="spec-val">3</span><span class="spec-lbl">Bedrooms</span></div>
+      <div class="spec"><span class="spec-val">2</span><span class="spec-lbl">Bathrooms</span></div>
+      <div class="spec"><span class="spec-val">1,500</span><span class="spec-lbl">Sq Ft</span></div>
+    </div>
+    <div class="sample-photos"><div>Photo</div><div>Photo</div><div>Photo</div></div>
+    ${row('Seller','Owner name')}
+    ${row('Seller contact','(555) 555-0100')}
+    ${row('Verified with owner','Address, price, photos')}
+    <div class="lcard-cta"><a href="/buyers.html" class="lcard-cta-text">Become a Founding Member</a><span class="lcard-arrow">→</span></div>
+  </div>
+  <div class="notify">
+    <div class="eyebrow">Founding listings in verification</div>
+    <h3>Be first to see our founding listings</h3>
+    <p>We're confirming our first owner-direct properties in Houston and Atlanta now. Leave your email and we'll let you know the day they go live.</p>
+    <form id="notifyForm" novalidate>
+      <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Notify me</button>
+    </form>
+    <div class="notify-msg" id="notifyMsg" aria-live="polite"></div>
+    <div class="spots"><strong>${FOUNDING_SPOTS_LEFT} of ${FOUNDING_SPOTS_TOTAL}</strong><span>Founding Member spots left at $29/month</span><a href="/buyers.html">Claim a spot →</a></div>
+  </div>`;
+}
+
+function wireNotify(){
+  const f=document.getElementById('notifyForm'); if(!f) return;
+  f.addEventListener('submit',async ev=>{
+    ev.preventDefault();
+    const msg=document.getElementById('notifyMsg'), em=f.email.value.trim(), btn=f.querySelector('button');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg.textContent='Please enter a valid email.';return}
+    btn.disabled=true; btn.textContent='Sending...';
+    try{
+      const fd=new FormData(); fd.append('email',em); fd.append('type','Listing alert signup'); fd.append('_subject','New PropBridge listing alert signup');
+      const r=await fetch('https://formspree.io/f/mppznekg',{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+      if(!r.ok) throw 0;
+      f.style.display='none'; msg.textContent="You're on the list. We'll email you when founding listings go live.";
+    }catch{
+      btn.disabled=false; btn.textContent='Notify me'; msg.textContent="Couldn't sign you up. Try again or email daniel@propbridgehomes.com.";
+    }
+  });
+}
 
 function daysAgo(iso){
   const d=Math.floor((Date.now()-new Date(iso).getTime())/864e5);
@@ -248,6 +338,7 @@ async function load(){
 function render(list){
   const g=document.getElementById('lg');
   document.getElementById('listing-count').textContent=`${list.length} properties available`;
+  if(!all.length){ g.innerHTML=foundingStage(); wireNotify(); return; }
   if(!list.length){
     g.innerHTML=all.length?`<div class="empty"><div class="empty-line"></div><h3>No listings match</h3><p>Try a different filter.</p></div>`:`<div class="empty"><div class="empty-line"></div><h3>Founding listings coming soon</h3><p>We are verifying our first owner-direct properties in Houston and Atlanta now. <a href="/buyers.html" style="color:var(--gold,#B89A6A)">Become a Founding Member</a> to see them first, or <a href="#" onclick="openModal();return false" style="color:var(--gold,#B89A6A)">list your property free</a>.</p></div>`;
     return;
