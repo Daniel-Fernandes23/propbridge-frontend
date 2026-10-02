@@ -62,36 +62,39 @@ function closeModal() {
   document.getElementById('smodal').classList.remove('open');
 }
 
+// Sends a form submission to daniel@propbridgehomes.com via Formspree. Returns true on success.
+async function pbSend(subject, data){
+  const fd=new FormData();
+  fd.append('_subject', subject);
+  if(data.email) fd.append('_replyto', data.email);
+  Object.entries(data).forEach(([k,v])=>fd.append(k, v==null?'':String(v)));
+  try{
+    const r=await fetch('https://formspree.io/f/mppznekg',{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    return r.ok;
+  }catch(e){return false}
+}
+const PB_EMAIL_OK=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
 async function submitListing() {
-  const n = document.getElementById('sn').value.trim();
-  const e = document.getElementById('se').value.trim();
-  const a = document.getElementById('sa').value.trim();
-  const p = document.getElementById('sq').value.replace(/[^0-9]/g, '');
+  const v = id => (document.getElementById(id)?.value || '').trim();
+  const n = v('sn'), e = v('se'), a = v('sa');
+  const p = v('sq').replace(/[^0-9]/g, '');
   if (!n || !e || !a || !p) { alert('Please complete all required fields.'); return; }
-  const btn = document.getElementById('sbtn');
-  btn.textContent = 'Submitting...';
-  btn.disabled = true;
-  const pts = a.split(',');
+  if (!PB_EMAIL_OK.test(e)) { alert('Please enter a valid email address.'); return; }
+  const btn = document.getElementById('sbtn'); const old = btn.textContent;
+  btn.textContent = 'Submitting...'; btn.disabled = true;
+  const data = { form: 'List Your Property', name: n, email: e, phone: v('sp'), address: a, asking_price: p,
+    property_type: v('st'), bedrooms: v('sb'), bathrooms: v('sba'), timeline: v('stl'), notes: v('sno') };
+  const ok = await pbSend('New PropBridge listing submission: ' + a, data);
+  if (!ok) { btn.textContent = old; btn.disabled = false; alert("Sorry, your listing didn't go through. Please try again or email daniel@propbridgehomes.com."); return; }
+  // Best-effort copy to the backend; never blocks the seller
   try {
-    await fetch(PB_API + '/api/listings', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        seller_name: n,
-        seller_email: e,
-        seller_phone: document.getElementById('sp').value,
-        address: pts[0]?.trim() || a,
-        city: pts[1]?.trim() || '',
-        state: pts[2]?.trim().split(' ')[0] || '',
-        zip: pts[2]?.trim().split(' ')[1] || '',
-        price: p,
-        property_type: document.getElementById('st').value,
-        bedrooms: document.getElementById('sb').value,
-        bathrooms: document.getElementById('sba').value,
-        timeline: document.getElementById('stl').value,
-        notes: document.getElementById('sno').value
-      })
-    });
+    const pts = a.split(',');
+    fetch(PB_API + '/api/listings', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ seller_name: n, seller_email: e, seller_phone: data.phone, address: pts[0]?.trim() || a,
+        city: pts[1]?.trim() || '', state: pts[2]?.trim().split(' ')[0] || '', zip: pts[2]?.trim().split(' ')[1] || '',
+        price: p, property_type: data.property_type, bedrooms: data.bedrooms, bathrooms: data.bathrooms,
+        timeline: data.timeline, notes: data.notes }) }).catch(() => {});
   } catch (err) {}
   document.getElementById('sform').style.display = 'none';
   document.getElementById('ssucc').style.display = 'block';

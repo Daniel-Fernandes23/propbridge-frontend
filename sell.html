@@ -90,8 +90,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid var(-
     </div>
 
     <div class="lead-form">
-      <form id="sellForm" action="https://formspree.io/f/mrpgdvob" method="POST">
+      <form id="sellForm" action="https://formspree.io/f/mppznekg" method="POST">
         <h2>Tell us about your property</h2>
+        <input type="hidden" name="_subject" value="New PropBridge seller submission (Sell page)">
+        <input type="hidden" name="form" value="Sell page">
         <label>Property address<input required type="text" name="address" placeholder="123 Main St, City, State" autocomplete="street-address"></label>
         <label>Your name<input required type="text" name="name" placeholder="Full name" autocomplete="name"></label>
         <label>Email<input required type="email" name="email" id="sellEmail" placeholder="you@email.com" autocomplete="email"></label>

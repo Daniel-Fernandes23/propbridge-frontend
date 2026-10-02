@@ -224,31 +224,35 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
     </nav>
-    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+    <p class="footer-legal">© 2026 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
   </div>
 </footer>
 
 <script>
-async function submitContact(){
-  const fn=document.getElementById('fn').value.trim();
-  const em=document.getElementById('em').value.trim();
-  const msg=document.getElementById('msg').value.trim();
-  if(!fn||!em||!msg){alert('Please fill in your name, email, and message.');return}
-  const btn=document.querySelector('.form-submit');
-  btn.textContent='Sending...';btn.disabled=true;
+// Sends a form submission to daniel@propbridgehomes.com via Formspree. Returns true on success.
+async function pbSend(subject, data){
+  const fd=new FormData();
+  fd.append('_subject', subject);
+  if(data.email) fd.append('_replyto', data.email);
+  Object.entries(data).forEach(([k,v])=>fd.append(k, v==null?'':String(v)));
   try{
-    await fetch('https://propbridge-backend-production.up.railway.app/api/users/register',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        email:em,
-        name:`${fn} ${document.getElementById('ln').value}`.trim(),
-        phone:document.getElementById('ph').value,
-        message:msg,
-        role:'seller',
-        password:Math.random().toString(36).slice(2)+'Pb1!'
-      })
-    });
-  }catch{}
+    const r=await fetch('https://formspree.io/f/mppznekg',{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    return r.ok;
+  }catch(e){return false}
+}
+const PB_EMAIL_OK=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+async function submitContact(){
+  const v=id=>(document.getElementById(id)?.value||'').trim();
+  const fn=v('fn'), em=v('em'), msg=v('msg');
+  if(!fn||!em||!msg){alert('Please fill in your name, email, and message.');return}
+  if(!PB_EMAIL_OK.test(em)){alert('Please enter a valid email address.');return}
+  const btn=document.querySelector('.form-submit'); const old=btn.textContent;
+  btn.textContent='Sending...';btn.disabled=true;
+  const ok=await pbSend('New PropBridge contact message: '+(v('subj')||'(no subject)'),{
+    form:'Contact page', name:`${fn} ${v('ln')}`.trim(), email:em, phone:v('ph'),
+    i_am_a:(document.getElementById('role')||{}).value||'', subject:v('subj'), message:msg});
+  if(!ok){btn.textContent=old;btn.disabled=false;alert("Sorry, your message didn't go through. Please try again or email daniel@propbridgehomes.com.");return}
   document.getElementById('cform').style.display='none';
   document.getElementById('csucc').style.display='block';
 }

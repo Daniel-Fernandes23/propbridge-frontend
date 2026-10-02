@@ -112,6 +112,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:1px solid var(-
       <p class="lede">Share your markets, price range and property type once. We'll only send you deals that fit. You can fill this in before or after choosing a plan.</p>
     </div>
     <form class="lead-form" action="https://formspree.io/f/mppznekg" method="POST">
+      <input type="hidden" name="_subject" value="New PropBridge buyer buy box">
+      <input type="hidden" name="form" value="Buyer buy box">
       <label>Your name<input required type="text" name="name" placeholder="Full name" autocomplete="name"></label>
       <label>Phone or email<input required type="text" name="contact" placeholder="Best way to reach you"></label>
       <label>Target markets<input required type="text" name="markets" placeholder="e.g. Houston, Atlanta"></label>

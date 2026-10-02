@@ -351,28 +351,35 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
     </nav>
-    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+    <p class="footer-legal">© 2026 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
   </div>
 </footer>
 
 <script>
-async function submitPartnership(){
-  const n=document.getElementById('cn').value.trim();
-  const e=document.getElementById('ce').value.trim();
-  const c=document.getElementById('cc').value.trim();
-  if(!n||!e||!c){alert('Please fill in your name, company, and email.');return}
-  const btn=document.querySelector('.form-submit');btn.textContent='Submitting...';btn.disabled=true;
+// Sends a form submission to daniel@propbridgehomes.com via Formspree. Returns true on success.
+async function pbSend(subject, data){
+  const fd=new FormData();
+  fd.append('_subject', subject);
+  if(data.email) fd.append('_replyto', data.email);
+  Object.entries(data).forEach(([k,v])=>fd.append(k, v==null?'':String(v)));
   try{
-    await fetch('https://propbridge-backend-production.up.railway.app/api/users/register',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        email:e,name:n,phone:document.getElementById('cp').value,
-        role:'contractor',company:c,
-        markets:[document.getElementById('cmkt').value],
-        password:Math.random().toString(36).slice(2)+'Pb1!'
-      })
-    });
-  }catch{}
+    const r=await fetch('https://formspree.io/f/mppznekg',{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    return r.ok;
+  }catch(e){return false}
+}
+const PB_EMAIL_OK=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+async function submitPartnership(){
+  const v=id=>(document.getElementById(id)?.value||'').trim();
+  const n=v('cn'), e=v('ce'), c=v('cc');
+  if(!n||!e||!c){alert('Please fill in your name, company, and email.');return}
+  if(!PB_EMAIL_OK.test(e)){alert('Please enter a valid email address.');return}
+  const btn=document.querySelector('.form-submit'); const old=btn.textContent;
+  btn.textContent='Submitting...';btn.disabled=true;
+  const ok=await pbSend('New PropBridge corporate partnership inquiry: '+c,{
+    form:'Corporate partnership', name:n, company:c, title:v('ct'), email:e, phone:v('cp'),
+    organization_type:v('ctype'), target_markets:v('cmkt'), monthly_volume:v('cvol'), notes:v('cnotes')});
+  if(!ok){btn.textContent=old;btn.disabled=false;alert("Sorry, your inquiry didn't go through. Please try again or email daniel@propbridgehomes.com.");return}
   document.getElementById('cform-wrap').style.display='none';
   document.getElementById('cform-success').style.display='block';
 }
