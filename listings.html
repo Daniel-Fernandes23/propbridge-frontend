@@ -268,6 +268,12 @@ const FOUNDING_SPOTS_TOTAL = 25;
 // Sample listings removed: only real, verified listings from the backend are shown.
 let all=[];
 
+// ---- Verified founding listings added by hand (street address and seller contact are NOT stored here; send those to members directly) ----
+const VERIFIED_LISTINGS = [
+  {id:'pb-001', price:289000, city:'Atlanta', area:'Southwest Atlanta', state:'GA', bedrooms:4, bathrooms:3, sqft:1284,
+   badge:'Founding Listing', tags:['Fully Renovated','No HOA','Basement','Near Airport'], timeline:'asap', created_at:'2026-10-02T12:00:00Z'},
+];
+
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
 function foundingStage(){
@@ -329,15 +335,15 @@ function daysAgo(iso){
 async function load(){
   try{
     const r=await fetch(BE+'/api/listings');
-    if(r.ok){const d=await r.json();all=d.listings||[]}
-    else all=[];
-  }catch{all=[]}
+    if(r.ok){const d=await r.json();all=[...VERIFIED_LISTINGS,...(d.listings||[])]}
+    else all=[...VERIFIED_LISTINGS];
+  }catch{all=[...VERIFIED_LISTINGS]}
   render(all);
 }
 
 function render(list){
   const g=document.getElementById('lg');
-  document.getElementById('listing-count').textContent=`${list.length} properties available`;
+  document.getElementById('listing-count').textContent=`${list.length} ${list.length===1?"property":"properties"} available`;
   if(!all.length){ g.innerHTML=foundingStage(); wireNotify(); return; }
   if(!list.length){
     g.innerHTML=all.length?`<div class="empty"><div class="empty-line"></div><h3>No listings match</h3><p>Try a different filter.</p></div>`:`<div class="empty"><div class="empty-line"></div><h3>Founding listings coming soon</h3><p>We are verifying our first owner-direct properties in Houston and Atlanta now. <a href="/buyers.html" style="color:var(--gold,#B89A6A)">Become a Founding Member</a> to see them first, or <a href="#" onclick="openModal();return false" style="color:var(--gold,#B89A6A)">list your property free</a>.</p></div>`;
