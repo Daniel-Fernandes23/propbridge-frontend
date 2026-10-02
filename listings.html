@@ -55,6 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .listings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.25rem;background:transparent}
 .lcard{background:var(--ink);padding:2.5rem;position:relative;transition:background 0.3s;display:flex;flex-direction:column;border:1px solid var(--border)}
 .lcard:hover{background:var(--ink2)}
+.lcard.clickable{cursor:pointer}
 .lcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity 0.3s}
 .lcard:hover::after{opacity:0.3}
 .lcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem}
@@ -72,7 +73,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;display:flex;ali
 .ltag{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:0.2rem 0.6rem;border:1px solid rgba(255,255,255,0.08)}
 .lcard-lock{display:flex;gap:0.6rem;align-items:flex-start;font-size:0.72rem;line-height:1.6;color:rgba(255,255,255,0.45);margin:1.25rem 0 0}
 .lock-ico{color:var(--gold);font-size:0.45rem;margin-top:0.45rem}
-.lcard-cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid var(--border2)}
+.lcard-cta{text-decoration:none;cursor:pointer;margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;border-top:1px solid var(--border2)}
 .lcard-cta-text{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:letter-spacing 0.3s}
 .lcard:hover .lcard-cta-text{letter-spacing:0.22em}
 .lcard-arrow{color:var(--gold);font-size:0.75rem;transition:transform 0.3s}
@@ -238,7 +239,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
       </div>
       <div class="reg-success" id="rsucc">
         <h3>Access Requested</h3>
-        <p>You will receive confirmation within 24 hours. Welcome to PropBridge.</p>
+        <p>Thanks! We'll reach out within 24 hours with deal alerts for your markets. Want full addresses and seller contacts? <a href="/buyers.html" style="color:var(--gold)">Become a Founding Member</a>.</p>
       </div>
     </div>
   </div>
@@ -256,7 +257,7 @@ footer{border-top:1px solid var(--border);padding:3rem 5%}
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
     </nav>
-    <p class="footer-legal">© 2025 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
+    <p class="footer-legal">© 2026 PropBridge. All rights reserved. Not a licensed real estate brokerage. | daniel@propbridgehomes.com</p>
   </div>
 </footer>
 
@@ -294,7 +295,7 @@ function foundingStage(){
     ${row('Seller','Owner name')}
     ${row('Seller contact','(555) 555-0100')}
     ${row('Verified with owner','Address, price, photos')}
-    <div class="lcard-cta"><a href="/buyers.html" class="lcard-cta-text">Become a Founding Member</a><span class="lcard-arrow">→</span></div>
+    <a class="lcard-cta" href="/buyers.html"><span class="lcard-cta-text">Become a Founding Member</span><span class="lcard-arrow">→</span></a>
   </div>
   <div class="notify">
     <div class="eyebrow">Founding listings in verification</div>
@@ -369,10 +370,10 @@ function render(list){
         <span class="lock-ico" aria-hidden="true">&#9679;</span>
         <span>Exact address, photos and seller contact for members only</span>
       </div>
-      <div class="lcard-cta">
-        <a href="/buyers.html" class="lcard-cta-text">Unlock full details</a>
+      <a class="lcard-cta" href="/buyers.html" aria-label="Unlock full details - become a Founding Member">
+        <span class="lcard-cta-text">Unlock full details</span>
         <span class="lcard-arrow">→</span>
-      </div>
+      </a>
     </div>
   `).join('');
 }
@@ -388,12 +389,28 @@ function filterL(f,btn){
 }
 
 async function submitReg(){
-  const e=document.getElementById('re').value.trim(),f=document.getElementById('rf').value.trim();
-  if(!e||!f){alert('Please fill in your name and email.');return}
-  try{await fetch(BE+'/api/users/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,name:`${f} ${document.getElementById('rl').value}`.trim(),phone:document.getElementById('rp').value,role:'contractor',markets:[document.getElementById('rm').value],password:Math.random().toString(36).slice(2)+'Pb1!'})})}catch{}
-  document.getElementById('rform').style.display='none';document.getElementById('rsucc').style.display='flex';
-  document.getElementById('rsucc').style.flexDirection='column';
-  document.getElementById('rsucc').style.alignItems='center';
+  const v=id=>document.getElementById(id).value.trim();
+  const e=v('re'), f=v('rf'), l=v('rl');
+  if(!f||!e){alert('Please fill in your name and email.');return}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){alert('Please enter a valid email address.');return}
+  const btn=document.querySelector('.reg-submit'); btn.disabled=true; const old=btn.textContent; btn.textContent='Sending...';
+  const fd=new FormData();
+  fd.append('_subject','New PropBridge Contractor Network registration');
+  fd.append('type','Contractor Network registration');
+  fd.append('name',`${f} ${l}`.trim()); fd.append('email',e); fd.append('phone',v('rp'));
+  fd.append('buyer_type',document.getElementById('rr').value); fd.append('markets',v('rm'));
+  try{
+    const r=await fetch('https://formspree.io/f/mppznekg',{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    if(!r.ok) throw new Error('form '+r.status);
+  }catch(err){
+    btn.disabled=false; btn.textContent=old;
+    alert("Sorry, we couldn't submit your request. Please try again or email daniel@propbridgehomes.com.");
+    return;
+  }
+  // Best-effort copy to the backend; never blocks the confirmation
+  try{fetch(BE+'/api/users/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,name:`${f} ${l}`.trim(),phone:v('rp'),role:document.getElementById('rr').value,markets:v('rm')})}).catch(()=>{})}catch{}
+  document.getElementById('rform').style.display='none';
+  const sc=document.getElementById('rsucc'); sc.style.display='flex'; sc.style.flexDirection='column'; sc.style.alignItems='center';
 }
 
 load();
